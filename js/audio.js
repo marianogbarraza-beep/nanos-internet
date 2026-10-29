@@ -53,6 +53,23 @@ window.NanoAudio = (() => {
     o.connect(g).connect(sfxGain); o.start(t); o.stop(t + p.d + .03);
   }
 
+  /* zumbido: traqueteo tipo MSN — pulsos rápidos en frecuencias que un parlante de notebook sí reproduce,
+     directo al master (el sfxGain es muy bajo para esto) */
+  function buzz() {
+    if (!ensure()) return;
+    const t0 = ctx.currentTime, P = .045;
+    for (let i = 0; i < 12; i++) {
+      const t = t0 + i * P, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'square'; o.frequency.setValueAtTime(i % 2 ? 330 : 247, t);
+      g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.16, t + .004); g.gain.exponentialRampToValueAtTime(.0001, t + P * .9);
+      o.connect(g).connect(master); o.start(t); o.stop(t + P);
+    }
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = noiseBuf; f.type = 'bandpass'; f.frequency.value = 1800; f.Q.value = .8;
+    g.gain.setValueAtTime(.12, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + .3);
+    s.connect(f).connect(g).connect(master); s.start(t0); s.stop(t0 + .3);
+  }
+
   /* ---------- MUSIC: "dial-up dreams" (A minor, 112 bpm) ---------- */
   const BPM = 112, STEP = 60 / BPM / 4;             // semicorchea
   const hz = n => 440 * Math.pow(2, (n - 69) / 12);  // midi → Hz
@@ -118,7 +135,7 @@ window.NanoAudio = (() => {
   };
 
   return {
-    sfx, music,
+    sfx, music, buzz,
     get sfxOn() { return sfxOn; },
     setSfx(on) { sfxOn = !!on; if (sfxOn) { ensure(); sfx('ok', true); } },
     unlock: ensure,

@@ -266,7 +266,8 @@ function initMsn(el) {
 }
 function nudge(winEl) {
   [winEl, document.body].forEach(n => { n.classList.remove('shake'); void n.offsetWidth; n.classList.add('shake'); });
-  NanoAudio.sfx('nudge', true);
+  NanoAudio.buzz();
+  navigator.vibrate?.([90, 40, 90, 40, 90]);   // en el celu también vibra
   setTimeout(() => [winEl, document.body].forEach(n => n.classList.remove('shake')), 600);
   Clippy.say('You just sent a nudge. In 2004 this ended friendships.', 'msn');
 }
