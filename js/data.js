@@ -145,6 +145,11 @@ window.NANO = {
   guestbook: [
     { name: 'nano (webmaster)', from: 'buenos aires', date: '2001-06-12', text: 'first!!! welcome to my guestbook. sign it, leave a trace, no spam pls. best viewed at 1024×768.' },
   ],
+  // reviews de hire_nano.shop: SOLO recomendaciones reales, con permiso de quien la escribió.
+  // Vacío = la tienda dice "0 customer reviews" e invita al guestbook. Ejemplo:
+  // { name: 'Nombre Apellido', role: 'Art Director', company: 'Media.Monks', text: 'lo que dijo, tal cual', url: 'https://linkedin.com/in/…' },
+  reviews: [
+  ],
   // webring: portfolios de amigos. Vacío = el webring del footer se oculta.
   webring: [
     // { name: 'nombre', url: 'https://…' },

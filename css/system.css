@@ -315,6 +315,11 @@ html.crt .site{filter:saturate(1.2) contrast(1.05)}
 .shopAlso img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #ccc}
 .shopAlso span{color:#0000cc;text-decoration:underline}
 .shopAlso small{color:#777;font-size:9px}
+.shopBlock h4 small{font-weight:400;color:#777}
+.shopRevList{display:grid;gap:8px}
+.shopRev{border-left:3px solid #ff9900;padding:4px 10px;background:#fffaf0}
+.shopRev p{margin:0 0 3px;font:italic 11px/1.5 var(--verdana)}
+.shopRev b{font-size:10px}.shopRev span{font-size:10px;color:#777;margin-left:6px}
 .shopFoot{padding:8px 12px;border-top:3px solid #000080;background:#f6f6ee;font:9px var(--verdana);color:#555;text-align:center}
 @media(max-width:640px){
   .shopMain{grid-template-columns:1fr}

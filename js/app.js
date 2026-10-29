@@ -178,6 +178,25 @@ function initShop(el) {
   $('[data-order]', el).textContent = order;
   const avail = $('#availLine'); if (avail) $('[data-shop-avail]', el).textContent = avail.textContent;
   $('[data-shop=linkedin]', el).href = NANO.links.linkedin;
+  // reviews: solo las reales de data.js. sin estrellas: con pocas reviews se leerían como una mala nota
+  const revs = NANO.reviews || [];
+  if (revs.length) {
+    const sum = $('[data-reviews-summary]', el);
+    sum.innerHTML = `💬 <a href="#" data-shop-reviews></a>`;
+    $('a', sum).textContent = `${revs.length} customer review${revs.length > 1 ? 's' : ''} from people who worked with him`;
+    $('a', sum).onclick = e => { e.preventDefault(); $('[data-reviews]', el).scrollIntoView({ behavior: 'smooth' }); };
+    const list = $('.shopRevList', el);
+    revs.forEach(r => {
+      const d = document.createElement('div'); d.className = 'shopRev';
+      d.innerHTML = '<p></p><div><b></b><span></span></div>';
+      $('p', d).textContent = `“${r.text}”`;
+      const who = $('b', d);
+      if (r.url) { const a = document.createElement('a'); a.href = r.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = r.name; who.appendChild(a); } else who.textContent = r.name;
+      $('span', d).textContent = [r.role, r.company].filter(Boolean).join(' · ');
+      list.appendChild(d);
+    });
+    $('[data-reviews]', el).hidden = false;
+  }
   const mail = $('[data-shop=mail]', el);
   mail.href = CONFIG.email
     ? `mailto:${CONFIG.email}?subject=${encodeURIComponent(`hire_nano.shop — order ${order}`)}&body=${encodeURIComponent("hey nano,\n\n1× Senior Visual Designer, 2026 Edition.\n\nthe project:\nthe timing:\nreferences (ugly ones welcome):\n")}`
@@ -395,6 +414,99 @@ if (location.hash === '#play' || location.hash === '#photo') showTab(location.ha
 })();
 
 /* ---------- filmstrip DEPT (fotos fisheye) ---------- */
+/* ---------- case study (hi-res! style): un proyecto contado por capítulos, a pantalla completa ----------
+   se arma solo con los campos del proyecto en data.js: context / did / images / why.
+   navegación fragmentada (números sueltos), flechas, y una salida siempre a la vista. */
+const Case = (() => {
+  const box = $('#case'), stage = $('.caseStage', box), nav = $('.caseNav', box), prog = $('.caseProg i', box);
+  let chapters = [], cur = 0, proj = null, lastFocus = null;
+  const build = p => {
+    const gal = (p.images || []).slice(1, 4);
+    return [
+      { k: `${p.client} · ${p.year}`, t: p.name, x: p.role, img: p.cover, intro: true },
+      { k: '01 / the brief', t: 'the brief', x: p.context, img: p.images?.[1] || p.cover },
+      { k: '02 / what i did', t: 'what i did', x: p.did, gal: gal.length ? gal : [p.cover] },
+      { k: '03 / why it works', t: 'why it works', x: p.why, img: p.cover },
+      { k: 'end of tape', t: 'that was it.', x: 'want the full thing, or the human behind it?', end: true },
+    ];
+  };
+  function render() {
+    const c = chapters[cur];
+    stage.innerHTML = '';
+    const s = document.createElement('div'); s.className = 'caseSlide' + (c.intro ? ' intro' : '') + (c.end ? ' end' : '');
+    s.innerHTML = `<div class="caseCopy"><small></small><h2></h2><p></p></div>`;
+    $('small', s).textContent = c.k; $('h2', s).textContent = c.t; $('p', s).textContent = c.x;
+    if (c.img) { const f = document.createElement('figure'); f.className = 'caseArt'; f.innerHTML = '<img alt="">'; $('img', f).src = `img/${c.img}`; $('img', f).alt = proj.name; s.prepend(f); }
+    if (c.gal) { const g = document.createElement('div'); g.className = 'caseGal'; c.gal.forEach((im, i) => { const b = document.createElement('button'); b.innerHTML = '<img alt="">'; $('img', b).src = `img/${im}`; $('img', b).alt = `${proj.name} — ${i + 1}`; b.onclick = () => openProject(proj.id, i + 1); g.appendChild(b); }); s.prepend(g); }
+    if (c.end) {
+      const a = document.createElement('div'); a.className = 'caseEnd';
+      a.innerHTML = (proj.url ? `<a class="btn hi" target="_blank" rel="noopener">[ open original on behance ↗ ]</a>` : '') +
+        `<button class="btn" data-case="gallery">[ all images ]</button><button class="btn hi" data-case="hire">[ 🛒 hire_nano.shop ]</button><button class="btn" data-case="exit">[ back to the work ]</button>`;
+      if (proj.url) $('a', a).href = proj.url;
+      $('.caseCopy', s).appendChild(a);
+    }
+    stage.appendChild(s);
+    $$('button', nav).forEach((b, i) => b.classList.toggle('on', i === cur));
+    prog.style.width = `${(cur / (chapters.length - 1)) * 100}%`;
+    NanoAudio.sfx(cur ? 'tick' : 'open');
+  }
+  function go(i) { cur = Math.max(0, Math.min(chapters.length - 1, i)); render(); }
+  function open(id) {
+    proj = NANO.projects.find(p => p.id === id); if (!proj) return;
+    chapters = build(proj); cur = 0; lastFocus = document.activeElement;
+    $('.caseTitle', box).textContent = `${proj.name.toLowerCase().replace(/\s+/g, '_')}.case`;
+    nav.innerHTML = '';
+    chapters.forEach((c, i) => {
+      const b = document.createElement('button'); b.textContent = i === chapters.length - 1 ? '■' : String(i).padStart(2, '0');
+      b.title = c.t; b.style.setProperty('--r', `${(i * 37) % 11 - 5}deg`); b.onclick = () => go(i); nav.appendChild(b);
+    });
+    box.hidden = false; document.documentElement.classList.add('caseOpen');
+    render(); $('.caseExit', box).focus();
+  }
+  function close() {
+    if (box.hidden) return;
+    box.hidden = true; document.documentElement.classList.remove('caseOpen'); NanoAudio.sfx('close');
+    $('#' + proj.id)?.scrollIntoView({ block: 'start' }); lastFocus?.focus?.();
+  }
+  box.addEventListener('click', e => {
+    const b = e.target.closest('[data-case]');
+    if (b) { const a = b.dataset.case; if (a === 'exit') close(); else if (a === 'gallery') openProject(proj.id); else if (a === 'hire') { close(); App.open('shop'); } return; }
+    if (e.target.closest('button,a,.caseBar,.caseNav')) return;
+    go(cur + (e.clientX < innerWidth / 3 ? -1 : 1));   // click en el tercio izquierdo vuelve, el resto avanza
+  });
+  addEventListener('keydown', e => {
+    if (box.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(cur + 1); }
+    else if (e.key === 'ArrowLeft') go(cur - 1);
+  });
+  document.addEventListener('click', e => { const b = e.target.closest('[data-case-open]'); if (b) { e.preventDefault(); open(b.dataset.caseOpen); } });
+  return { open, close };
+})();
+
+/* lab_log: experimentos (group 'play') del más nuevo al más viejo, cada uno con su pregunta y lo que salió */
+(function labLog() {
+  const list = $('#labList'); if (!list || !window.NANO) return;
+  const items = NANO.projects.filter(p => p.group === 'play').sort((a, b) => b.year - a.year);
+  $('#labCount').textContent = String(items.length).padStart(2, '0');
+  items.forEach((p, i) => {
+    const li = document.createElement('li');
+    li.innerHTML =
+      `<div class="labDate"><b></b><small></small></div>` +
+      `<button class="labThumb" data-project="${p.id}"><img loading="lazy" alt=""></button>` +
+      `<div class="labBody"><h3><span class="labDir"></span></h3><p class="labQ"><i>q:</i> <span></span></p><p class="labA"><i>→</i> <span></span></p>` +
+      `<div class="labActs"><a href="#" data-project="${p.id}">[ open ]</a></div></div>`;
+    $('.labDate b', li).textContent = p.year;
+    $('.labDate small', li).textContent = `#${String(items.length - i).padStart(3, '0')}`;
+    $('.labThumb img', li).src = `img/${p.cover}`; $('.labThumb img', li).alt = p.name;
+    $('.labDir', li).textContent = p.id.replace(/-/g, '_') + '/';
+    $('h3', li).append(` ${p.name} · ${p.role.toLowerCase()}`);
+    $('.labQ span', li).textContent = p.context;
+    $('.labA span', li).textContent = p.why;
+    if (p.url) { const a = document.createElement('a'); a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = '[ full project on behance ↗ ]'; $('.labActs', li).append(' ', a); }
+    list.appendChild(li);
+  });
+})();
 (function filmstrip() {
   const fs = $('#filmstrip'); if (!fs || !window.NANO) return;
   NANO.dept.forEach(n => {
@@ -458,6 +570,24 @@ if (finePointer && !reduceMotion) {
 
 /* ---------- cara del hero → abre nano.jpg ---------- */
 $('.faceCut img').addEventListener('click', () => open('face'));
+
+/* la cara te mira: gira hacia el cursor en 3D, a saltos de 4° (stop-motion, como el resto del sitio).
+   guiño a los portfolios de 2004 con ojos que seguían el mouse */
+if (finePointer && !reduceMotion) {
+  const face = $('.faceCut');
+  let raf = 0, mx = 0, my = 0;
+  const look = () => {
+    raf = 0;
+    const r = face.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    const dx = (mx - (r.left + r.width / 2)) / innerWidth, dy = (my - (r.top + r.height / 2)) / innerHeight;
+    const snap = v => Math.round(v / 4) * 4;
+    const ry = snap(Math.max(-24, Math.min(24, dx * 60))), rx = snap(Math.max(-16, Math.min(16, -dy * 40)));
+    face.style.transform = `perspective(600px) rotateY(${ry}deg) rotateX(${rx}deg)`;
+  };
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; if (!raf) raf = requestAnimationFrame(look); }, { passive: true });
+  document.addEventListener('pointerleave', () => { face.style.transform = ''; });
+}
 
 /* ---------- "e-mail nano" del hero → msn con el texto ---------- */
 $('[data-quick]').addEventListener('submit', e => {
