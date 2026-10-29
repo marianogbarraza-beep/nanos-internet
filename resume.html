@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nano García Barraza — Resume</title>
+<!--
+  resume.html — fuente del CV. resume.pdf se genera desde acá:
+  "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=resume.pdf resume.html
+  Editá este archivo y volvé a correr eso. Una sola hoja A4.
+-->
+<style>
+  @page{size:A4;margin:0}
+  :root{--ink:#111;--muted:#555;--line:#d9d9d9;--hi:#1b47b8;--neon:#39ff14;--mag:#ff2bd6}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff;color:var(--ink)}
+  body{font:10.5px/1.5 Verdana,Tahoma,Geneva,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;min-height:297mm;margin:0 auto;padding:16mm 16mm 12mm;display:grid;grid-template-rows:auto 1fr auto}
+  /* barra de título Win98: el guiño, solo arriba */
+  .bar{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font:700 10px Verdana,sans-serif;padding:3px 6px;letter-spacing:.04em}
+  .bar i{font-style:normal;display:inline-flex;gap:3px}
+  .bar i b{width:14px;height:12px;background:#c0c0c0;border:1px solid;border-color:#fff #404040 #404040 #fff;color:#000;font:700 8px/10px Verdana;text-align:center}
+  header{border:2px solid #000080;border-top:0;padding:14px 16px 12px;display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:end}
+  h1{margin:0;font:400 38px/0.95 Impact,'Arial Black',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+  h1 span{color:var(--hi)}
+  .role{margin:6px 0 0;font:700 12px Verdana,sans-serif}
+  .role em{font-style:normal;color:var(--muted);font-weight:400}
+  .contact{text-align:right;font:10px/1.6 'Courier New',monospace}
+  .contact a{color:var(--ink);text-decoration:none}
+  main{display:grid;grid-template-columns:1fr 58mm;gap:0 9mm;margin-top:9mm}
+  h2{margin:0 0 6px;font:400 15px Impact,'Arial Black',sans-serif;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #000;padding-bottom:2px}
+  h2::before{content:"▸ ";color:var(--hi)}
+  section{margin-bottom:7mm}
+  p{margin:0 0 6px}
+  .job{display:grid;grid-template-columns:24mm 1fr;gap:8px;padding:6px 0;border-bottom:1px dotted var(--line)}
+  .job:last-child{border-bottom:0}
+  .when{font:10px 'Courier New',monospace;color:var(--muted);padding-top:1px}
+  .when b{color:var(--hi)}
+  .job h3{margin:0;font:700 11px Verdana,sans-serif}
+  .job h3 span{font-weight:400;color:var(--muted)}
+  .job p{margin:2px 0 0;color:#333}
+  .work li{margin-bottom:5px}
+  .work b{display:block}
+  .work span{color:var(--muted);font:10px 'Courier New',monospace}
+  ul{margin:0;padding:0;list-style:none}
+  aside li{padding:2px 0}
+  aside li::before{content:"■ ";color:var(--hi);font-size:8px}
+  .tags{display:flex;flex-wrap:wrap;gap:4px}
+  .tags span{border:1px solid #000;padding:1px 6px;font:10px 'Courier New',monospace;background:#f3f3f3}
+  .links a{color:var(--hi);text-decoration:none;font:10px/1.8 'Courier New',monospace;display:block;word-break:break-all}
+  footer{display:flex;justify-content:space-between;border-top:2px solid #000;padding-top:5px;font:9px 'Courier New',monospace;color:var(--muted)}
+  footer b{color:var(--ink)}
+  @media screen{body{background:#008080}.page{background:#fff;margin:20px auto;box-shadow:4px 4px 0 #000}}
+  @media screen and (max-width:820px){.page{width:auto;margin:8px;padding:16px}main,header{grid-template-columns:1fr}.contact{text-align:left}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div>
+    <div class="bar"><span>RESUME.PDF — nano's internet</span><i><b>_</b><b>□</b><b>×</b></i></div>
+    <header>
+      <div>
+        <h1>Nano García<br><span>Barraza</span></h1>
+        <p class="role">Senior Visual Designer <em>— campaigns, identities &amp; digital experiences</em></p>
+      </div>
+      <div class="contact">
+        Buenos Aires, Argentina<br>
+        <a href="mailto:marianogbarraza@gmail.com">marianogbarraza@gmail.com</a><br>
+        <a href="https://www.behance.net/marianogbarraza">behance.net/marianogbarraza</a><br>
+        <a href="https://www.linkedin.com/in/mariano-leonel-garcia-barraza-686a1299/">linkedin.com/in/mariano-leonel-garcia-barraza</a>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <div>
+      <section>
+        <h2>Profile</h2>
+        <p>Visual designer from Buenos Aires, currently at DEPT® designing for Google. Over ten years moving from editorial and brand work to large-scale campaigns and digital experiences for global brands — Google, Netflix, Chevrolet.</p>
+        <p>I build visual systems with a point of view: bold compositions, clear typography and images that people actually want to look at. From curious creator to full-time designer.</p>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <div class="job"><div class="when"><b>now ●</b></div><div><h3>Senior Visual Designer <span>· DEPT®</span></h3><p>Visual design for Google — product pages, campaigns and digital experiences (Pixel, Pixel Watch, Fitbit, Google Skills).</p></div></div>
+        <div class="job"><div class="when">2021 – 2025</div><div><h3>Senior Graphic Designer <span>· Media.Monks</span></h3><p>Campaigns, presentation design and concept work for global brands, including Netflix and Chevrolet.</p></div></div>
+        <div class="job"><div class="when">2018 – 2021</div><div><h3>Visual &amp; Communication Senior Analyst <span>· Accenture</span></h3><p>Visual communication, presentations and brand applications.</p></div></div>
+        <div class="job"><div class="when">2018</div><div><h3>Editorial Designer <span>· SPG</span></h3><p>Editorial layout and publication design.</p></div></div>
+        <div class="job"><div class="when">2015 – 2018</div><div><h3>Graphic Designer <span>· Fundación Gutenberg</span></h3><p>Graphic design, identity and print pieces.</p></div></div>
+      </section>
+
+      <section>
+        <h2>Selected work</h2>
+        <ul class="work">
+          <li><b>Google Skills</b><span>google · visual identity &amp; concept · 2025</span></li>
+          <li><b>Netflix Ads — Conference</b><span>netflix brazil · presentation design · 2025</span></li>
+          <li><b>Chevy EV — Concept Design</b><span>chevrolet · graphic design · 2025</span></li>
+          <li><b>Pixel · Pixel Watch · Fitbit Air × Stephen Curry</b><span>google @ dept® · product pages &amp; campaigns · 2026</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <aside>
+      <section>
+        <h2>What I do</h2>
+        <ul>
+          <li>Art direction</li>
+          <li>Campaigns &amp; ad creatives</li>
+          <li>Visual identity &amp; branding</li>
+          <li>Digital experiences &amp; web</li>
+          <li>UI design &amp; prototyping</li>
+          <li>Presentation design</li>
+          <li>Product storytelling</li>
+          <li>Editorial design</li>
+          <li>Photography</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Strengths</h2>
+        <div class="tags"><span>typography</span><span>visual systems</span><span>composition</span><span>color</span><span>concept</span><span>motion</span><span>taste</span></div>
+      </section>
+      <section>
+        <h2>Online</h2>
+        <div class="links">
+          <a href="https://www.behance.net/marianogbarraza">behance ↗</a>
+          <a href="https://www.linkedin.com/in/mariano-leonel-garcia-barraza-686a1299/">linkedin ↗</a>
+          <a href="https://dribbble.com/marianogbarraza">dribbble ↗</a>
+          <a href="https://www.instagram.com/nano.gbarraza/">instagram ↗</a>
+        </div>
+      </section>
+      <section>
+        <h2>Off-screen</h2>
+        <p>Photography, technology, games, CRTs, vinyl and the weird corners of the internet.</p>
+      </section>
+    </aside>
+  </main>
+
+  <footer><span>nano garcía barraza · <b>available for work</b></span><span>best viewed at 1024×768 · printed 2026</span></footer>
+</div>
+</body>
+</html>
