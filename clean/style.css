@@ -179,6 +179,15 @@ h3{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.12em;color
 .photos a:hover img{transform:scale(1.06)}
 .photos span{display:block;font:11px var(--mono);color:var(--muted);margin-top:6px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+/* ---------- recomendaciones ---------- */
+.quotes{padding:clamp(80px,12vw,160px) var(--pad) 0}
+.quotes[hidden]{display:none}
+.quoteList{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,56px);margin-top:28px}
+.quote{margin:0;border-top:1px solid var(--line);padding-top:22px}
+.quote blockquote{margin:0 0 18px;font:700 clamp(20px,2vw,28px)/1.25 var(--display);font-variation-settings:'wdth' 85}
+.quote figcaption{display:flex;flex-direction:column;gap:2px;font:12px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.quote figcaption b,.quote figcaption a{color:var(--hi);font-weight:500;text-decoration:none}
+
 /* ---------- contacto ---------- */
 .contact{padding:clamp(80px,12vw,160px) var(--pad) clamp(60px,8vw,100px)}
 .contactLead{display:flex;align-items:center;gap:10px;font:13px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:0 0 18px}

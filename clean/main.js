@@ -77,6 +77,21 @@ const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls)
   });
 })();
 
+/* ---------- recomendaciones: las mismas reviews reales que la tienda de la classic ---------- */
+(function quotes() {
+  const revs = NANO.reviews || []; if (!revs.length) return;
+  const list = $('#quoteList');
+  revs.forEach(r => {
+    const f = el('figure', 'quote reveal');
+    f.append(el('blockquote', '', `“${r.text}”`));
+    const cap = el('figcaption');
+    const who = r.url ? Object.assign(el('a', '', r.name), { href: r.url, target: '_blank', rel: 'noopener' }) : el('b', '', r.name);
+    cap.append(who, el('span', '', [r.role, r.company].filter(Boolean).join(' · ')));
+    f.append(cap); list.append(f);
+  });
+  $('#quotes').hidden = false;
+})();
+
 /* ---------- nav: fondo al scrollear + sección activa ---------- */
 const nav = $('#nav');
 addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
