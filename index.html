@@ -38,7 +38,7 @@
   </nav>
   <div class="navRight">
     <span class="status"><b class="dot"></b><span>available</span></span>
-    <a class="classic" href="classic.html" title="the 2001 edition: windows, clippy, guestbook, sound">classic mode ↗</a>
+    <a class="classic" href="classic.html" data-classic title="the 2001 edition: windows, clippy, guestbook, sound">classic mode ↗</a>
   </div>
 </header>
 
@@ -52,11 +52,11 @@
       <!-- íconos pixel 16×16 dibujados a mano, sin fondo: como los del escritorio de Win98 -->
       <a class="deskIcon" href="#work"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 3h5l1 2h8v9H1z" fill="#000"/><path d="M1 3h5l1 2h8v8H1z" fill="#ffd54a"/><path d="M1 6h14v7H1z" fill="#ffe98a"/><path d="M1 5h14v1H1z" fill="#c69a12"/><path d="M2 7h12v5H2z" fill="#ffd54a"/></svg><span>work\</span></a>
       <a class="deskIcon" href="resume.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1h8l3 3v11H3z" fill="#000"/><path d="M3 1h8v3h3v10H3z" fill="#fff"/><path d="M11 1l3 3h-3z" fill="#999"/><path d="M4 8h8v5H4z" fill="#c62828"/><path d="M5 9h2v1H5zM5 11h1v1H5zM8 9h1v3H8zM10 9h2v1h-2zM10 11h1v1h-1z" fill="#fff"/><path d="M5 5h5v1H5zM5 6.5h4v1H5z" fill="#333"/></svg><span>resume.pdf</span></a>
-      <a class="deskIcon" href="classic.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 2h14v10H1z" fill="#000"/><path d="M1 2h14v9H1z" fill="#c0c0c0"/><path d="M2 3h12v7H2z" fill="#000080"/><path d="M3 4h10v1H3zM3 6h6v1H3zM3 8h8v1H3z" fill="#39ff14"/><path d="M5 12h6v2H5z" fill="#808080"/><path d="M4 14h8v1H4z" fill="#000"/></svg><span>classic.exe</span></a>
+      <a class="deskIcon" href="classic.html" data-classic><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 2h14v10H1z" fill="#000"/><path d="M1 2h14v9H1z" fill="#c0c0c0"/><path d="M2 3h12v7H2z" fill="#000080"/><path d="M3 4h10v1H3zM3 6h6v1H3zM3 8h8v1H3z" fill="#39ff14"/><path d="M5 12h6v2H5z" fill="#808080"/><path d="M4 14h8v1H4z" fill="#000"/></svg><span>classic.exe</span></a>
     </nav>
-    <p class="path reveal">C:\NANO\ — PORTFOLIO 2026</p>
     <div class="heroGrid">
       <div>
+        <p class="path reveal">C:\NANO\ — PORTFOLIO 2026</p>
         <p class="heroWho reveal">Nano García Barraza <span>— Senior Visual Designer @ DEPT®</span></p>
         <h1 class="heroTitle"><span class="line"><span>Campaigns,</span></span> <span class="line"><span>identities</span></span> <span class="line"><span>&amp; digital</span></span> <span class="line"><span>experiences</span></span> <span class="line"><em>people actually</em></span> <span class="line"><em>want to look at.</em></span></h1>
       </div>
@@ -172,10 +172,11 @@
 
 <!-- footer = barra de tareas Win98. Start lleva a la 2001 edition -->
 <footer class="taskbar">
-  <a class="start" href="classic.html" title="the 2001 edition"><i></i>Start</a>
+  <a class="start" href="classic.html" data-classic title="the 2001 edition"><i></i>Start</a>
   <a class="task on" href="#top">nano.exe — portfolio 2026</a>
+  <button class="task" id="classicTask" data-classic hidden>classic.exe</button>
   <span class="task">© 2001–2026 · visitor <b id="visits">000000</b></span>
-  <span class="tray"><b class="dot"></b><span id="clockTray">--:--</span></span>
+  <span class="tray"><button class="trayBtn" id="soundBtn" data-sound title="click sounds: off" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="#000"/><path class="wave" d="M11 5c1.5 1.5 1.5 4.5 0 6M13 3c2.5 2.5 2.5 7.5 0 10" fill="none" stroke="#000" stroke-width="1.4"/><path class="mute" d="M10 5l5 6M15 5l-5 6" stroke="#c00" stroke-width="1.6"/></svg></button><b class="dot"></b><span id="clockTray">--:--</span></span>
 </footer>
 
 <!-- ============ hover preview (índice) ============ -->
@@ -186,6 +187,14 @@
   <div class="viewerBar"><span class="viewerTitle"></span><span class="viewerCount"></span><button class="viewerClose" data-v="close" aria-label="close">close ×</button></div>
   <div class="viewerStage"><button class="viewerNav prev" data-v="prev" aria-label="previous">←</button><img alt=""><button class="viewerNav next" data-v="next" aria-label="next">→</button></div>
   <div class="viewerInfo"><p class="viewerText"></p><a class="textLink viewerLink" target="_blank" rel="noopener">open on behance ↗</a></div>
+</div>
+
+<!-- ============ classic.exe: la 2001 edition en una ventana, sin salir del sitio ============ -->
+<div class="classicWin" id="classicWin" hidden role="dialog" aria-modal="true" aria-label="classic mode">
+  <div class="classicBox win">
+    <div class="winBar"><span>classic.exe — NANO'S INTERNET (2001 edition)</span><button data-cw="min" title="minimize" aria-label="minimize">_</button><button data-cw="max" title="maximize" aria-label="maximize">□</button><button data-cw="close" title="close" aria-label="close">×</button></div>
+    <div class="classicBody"><iframe title="nano's internet — 2001 edition" loading="lazy"></iframe></div>
+  </div>
 </div>
 
 <!-- ============ case study ============ -->

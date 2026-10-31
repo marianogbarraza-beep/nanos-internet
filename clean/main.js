@@ -184,7 +184,7 @@ if (finePointer) {
 let lastFocus = null;
 const lock = (box, on) => {
   box.hidden = !on;
-  document.documentElement.classList.toggle('locked', !$('#viewer').hidden || !$('#case').hidden);
+  document.documentElement.classList.toggle('locked', !$('#viewer').hidden || !$('#case').hidden || (!$('#classicWin').hidden && !$('#classicWin').classList.contains('min')));
   if (on) { lastFocus = document.activeElement; setTimeout(() => $('button', box)?.focus(), 30); } else lastFocus?.focus?.();
 };
 
@@ -272,6 +272,59 @@ const Case = (() => {
     if (e.key === 'Escape') lock(box, false); else if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
   });
   return { open };
+})();
+
+/* ---------- classic.exe: la 2001 edition en una ventana sobre el sitio (el link sigue funcionando sin JS) ---------- */
+const Classic = (() => {
+  const box = $('#classicWin'), frame = $('iframe', box);
+  function open() {
+    if (!frame.src) frame.src = 'classic.html';
+    box.classList.remove('min', 'max'); lock(box, true); Sound.play('open');
+    // minimizada queda como "tarea" en la barra: el botón classic.exe la vuelve a abrir
+    const task = $('#classicTask'); task.hidden = false; task.classList.add('on');
+  }
+  function close() { lock(box, false); box.classList.remove('min', 'max'); $('#classicTask').hidden = true; Sound.play('close'); }
+  box.addEventListener('click', e => {
+    const a = e.target.closest('[data-cw]')?.dataset.cw;
+    if (a === 'close') close(); else if (a === 'max') box.classList.toggle('max'); else if (a === 'min') { box.classList.add('min'); document.documentElement.classList.remove('locked'); }
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-classic]'); if (!a || e.ctrlKey || e.metaKey || e.button === 1) return;
+    e.preventDefault(); if (box.hidden || !box.classList.contains('min')) open(); else { box.classList.remove('min'); lock(box, true); }
+  });
+  addEventListener('keydown', e => { if (!box.hidden && e.key === 'Escape') close(); });
+  return { open, close };
+})();
+
+/* ---------- click de Windows 98: apagado por defecto, se prende en la bandeja ---------- */
+const Sound = (() => {
+  let ctx = null, on = false;
+  try { on = localStorage.getItem('clean.sound') === '1'; } catch (e) {}
+  const btn = $('#soundBtn');
+  const sync = () => { btn.setAttribute('aria-pressed', on); btn.title = `click sounds: ${on ? 'on' : 'off'}`; };
+  const ensure = () => { if (!ctx) { const AC = window.AudioContext || window.webkitAudioContext; if (AC) ctx = new AC(); } if (ctx?.state === 'suspended') ctx.resume(); return ctx; };
+  // el "click" de Win98: un golpecito seco de ruido filtrado + un tic grave. open/close: dos tonos cortos
+  function play(kind = 'click') {
+    if (!on || !ensure()) return;
+    const t = ctx.currentTime;
+    if (kind === 'click') {
+      const b = ctx.createBuffer(1, ctx.sampleRate * .03, ctx.sampleRate), d = b.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+      const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = b; f.type = 'bandpass'; f.frequency.value = 2400; f.Q.value = 1.2; g.gain.value = .25;
+      s.connect(f).connect(g).connect(ctx.destination); s.start(t);
+      const o = ctx.createOscillator(), og = ctx.createGain(); o.type = 'square'; o.frequency.setValueAtTime(900, t); o.frequency.exponentialRampToValueAtTime(400, t + .02);
+      og.gain.setValueAtTime(.08, t); og.gain.exponentialRampToValueAtTime(.0001, t + .03); o.connect(og).connect(ctx.destination); o.start(t); o.stop(t + .04);
+    } else {
+      const up = kind === 'open';
+      [0, .09].forEach((dt, i) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'triangle'; o.frequency.value = up ? [440, 660][i] : [660, 440][i];
+        g.gain.setValueAtTime(.0001, t + dt); g.gain.exponentialRampToValueAtTime(.18, t + dt + .01); g.gain.exponentialRampToValueAtTime(.0001, t + dt + .12); o.connect(g).connect(ctx.destination); o.start(t + dt); o.stop(t + dt + .14); });
+    }
+  }
+  btn.addEventListener('click', e => { e.stopPropagation(); on = !on; try { localStorage.setItem('clean.sound', on ? '1' : '0'); } catch (err) {} sync(); if (on) { ensure(); play('open'); } });
+  document.addEventListener('click', e => { if (e.target.closest('a,button') && !e.target.closest('#soundBtn')) play('click'); });
+  sync();
+  return { play, get on() { return on; } };
 })();
 
 /* ---------- delegados: abrir visor / case ---------- */

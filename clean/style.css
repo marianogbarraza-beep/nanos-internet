@@ -68,7 +68,8 @@ a,button,[role=button],label,select{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 
 /* ---------- hero ---------- */
 /* el hero es un escritorio: teal, íconos, la ventana con tu cara */
-.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding:96px var(--pad) 28px;overflow:hidden;background:var(--teal);color:var(--paper)}
+.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;padding:120px var(--pad) 28px;overflow:hidden;background:var(--teal);color:var(--paper)}
+.hero .path{margin-bottom:14px}
 /* las nubes del escritorio de Win98, muy abajo: ruido suavizado que se desplaza despacio */
 .hero::before{content:"";position:absolute;inset:-20%;pointer-events:none;opacity:.22;mix-blend-mode:screen;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0022' numOctaves='5' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E") 0 0/900px 900px;animation:clouds 120s linear infinite}
 @keyframes clouds{to{background-position:900px 300px}}
@@ -78,9 +79,10 @@ a,button,[role=button],label,select{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 .heroTitle em{color:var(--yel)}
 .heroFoot{border-color:rgba(241,238,230,.25);color:rgba(241,238,230,.7)}
 .scrollCue{color:var(--paper)}.scrollCue span{color:var(--yel)}
-.deskIcons{position:absolute;left:var(--pad);top:92px;display:grid;gap:14px;z-index:2}
-@media(min-width:761px){.hero .path,.heroGrid{padding-left:104px}}
-.deskIcon{display:grid;justify-items:center;gap:4px;width:76px;text-decoration:none;color:var(--paper);font:11px Verdana,Tahoma,sans-serif;text-align:center;padding:6px 2px;border:1px dotted transparent}
+.deskIcons{position:absolute;left:var(--pad);top:96px;display:grid;gap:18px;z-index:2}
+@media(min-width:761px){.heroGrid{padding-left:104px}}   /* columna de íconos (76) + aire: el texto arranca en un segundo eje fijo */
+.deskIcon{display:grid;justify-items:start;gap:4px;width:76px;text-decoration:none;color:var(--paper);font:11px Verdana,Tahoma,sans-serif;text-align:left;padding:0;border:1px dotted transparent}
+.deskIcon span{margin-left:-3px}
 .deskIcon svg{width:36px;height:36px;shape-rendering:crispEdges;filter:drop-shadow(2px 2px 0 rgba(0,0,0,.35))}
 .deskIcon span{padding:0 3px;line-height:1.2}
 .deskIcon:hover{border-color:rgba(241,238,230,.6)}
@@ -92,7 +94,8 @@ a,button,[role=button],label,select{cursor:url("data:image/svg+xml,%3Csvg xmlns=
 .stars{position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(1px 1px at 12% 22%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 78% 14%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 44% 70%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 88% 62%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 88%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 62% 40%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 6% 58%,var(--hi) 50%,transparent 51%),radial-gradient(1.5px 1.5px at 94% 84%,var(--hi) 50%,transparent 51%);background-size:420px 420px;animation:drift 90s linear infinite}
 @keyframes drift{to{background-position:420px -420px}}
 .path{margin:0;font:11px var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
-.heroGrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;position:relative}
+.heroGrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start;position:relative}   /* el texto arranca arriba, siempre debajo de la nav */
+.heroGrid>.heroFace{align-self:center}
 .heroWho{margin:0 0 18px;font:500 15px var(--mono);color:var(--ink)}
 .heroWho span{color:var(--muted)}
 .heroGrid>div:first-child{position:relative;z-index:1}   /* si la ventana se acerca, el texto queda arriba */
@@ -267,12 +270,32 @@ h3{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.12em;color
 .contactLinks a{font:13px var(--mono);text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--muted);transition:color .2s}
 .contactLinks a:hover{color:var(--hi)}
 
+/* ---------- classic.exe: ventana con la 2001 edition adentro ---------- */
+.classicWin{position:fixed;inset:0;z-index:85;background:rgba(0,0,0,.35);display:grid;place-items:center;padding:24px 24px 58px}
+.classicWin[hidden]{display:none}
+.classicBox{width:min(1180px,100%);height:100%;display:grid;grid-template-rows:auto 1fr;box-shadow:1px 1px 0 #000,14px 14px 0 rgba(0,0,0,.35);animation:winIn .22s steps(4) both}
+.classicWin.max{padding:0 0 34px}.classicWin.max .classicBox{width:100%;box-shadow:none}
+.classicWin.min .classicBox{display:none}
+@keyframes winIn{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.classicBox .winBar button{width:16px;height:14px;border:1px solid;border-color:#fff #404040 #404040 #fff;background:var(--grey);color:#000;font:700 10px/11px Verdana,sans-serif;text-align:center;padding:0;box-shadow:1px 1px 0 #000;cursor:pointer}
+.classicBox .winBar button:active{border-color:#404040 #fff #fff #404040;box-shadow:none;transform:translate(1px,1px)}
+.classicBody{margin:0 2px 2px;border:2px solid;border-color:#808080 #fff #fff #808080;background:#000;min-height:0}
+.classicBody iframe{width:100%;height:100%;border:0;display:block;background:#000}
+@media(max-width:760px){.classicWin{padding:0 0 34px}.classicBox{width:100%;box-shadow:none}}
+
+/* botón de sonido en la bandeja */
+.trayBtn{width:22px;height:20px;padding:2px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.trayBtn svg{width:16px;height:16px;shape-rendering:crispEdges}
+.trayBtn .wave{display:none}.trayBtn[aria-pressed=true] .wave{display:block}.trayBtn[aria-pressed=true] .mute{display:none}
+.trayBtn:hover{background:#d4d4d4}
+
 /* ---------- footer = barra de tareas ---------- */
 .taskbar{position:sticky;bottom:0;z-index:45;display:flex;align-items:stretch;gap:4px;padding:3px;background:var(--grey);border-top:2px solid #fff;box-shadow:0 -1px 0 #808080;font:11px Verdana,Tahoma,sans-serif;color:#000;height:34px}
 .start{display:flex;align-items:center;gap:6px;padding:0 10px;border:2px solid;border-color:#fff #404040 #404040 #fff;background:var(--grey);color:#000;font:700 11px Verdana,sans-serif;text-decoration:none;box-shadow:1px 1px 0 #000}
 .start i{width:14px;height:12px;background:conic-gradient(from 90deg,#f00 0 25%,#0a0 0 50%,#00f 0 75%,#ff0 0);display:inline-block;border:1px solid #000}
 .start:hover{background:#d4d4d4}
 .task{display:flex;align-items:center;gap:6px;padding:0 10px;border:2px solid;border-color:#fff #404040 #404040 #fff;background:var(--grey);max-width:50vw;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-decoration:none;color:#000}
+.task[hidden]{display:none}
 .task.on{border-color:#404040 #fff #fff #404040;background:#d4d4d4;font-weight:700}
 .task.on::before{content:"";width:10px;height:10px;background:var(--navy);border:1px solid #fff;flex:none}
 .tray{margin-left:auto;display:flex;align-items:center;gap:8px;padding:0 10px;border:1px solid;border-color:#808080 #fff #fff #808080;color:#000}
