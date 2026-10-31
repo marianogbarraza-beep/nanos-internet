@@ -1,0 +1,224 @@
+/* ============================================================
+   clean/main.js — arma las secciones desde ../js/data.js (el mismo
+   contenido que la versión classic) y maneja: nav, reveal, preview
+   del índice, visor de galería y case study por capítulos.
+   ============================================================ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const IMG = f => `../img/${f}`;
+const reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const finePointer = matchMedia('(pointer:fine)').matches;
+const P = id => NANO.projects.find(p => p.id === id);
+// miniaturas livianas para el índice (las originales quedan para el visor)
+const THUMB = { christmas: 'th-christmas.jpg', trubit: 'th-trubit.jpg', diskhe: 'th-diskhe.jpg', soledad: 'th-soledad.jpg', altra: 'th-altra.jpg' };
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+/* ---------- featured: los 3 grandes ---------- */
+(function featured() {
+  const box = $('#featured');
+  NANO.projects.filter(p => p.featured).forEach((p, i) => {
+    const art = el('article', 'feat reveal');
+    const media = el('a', 'featMedia win'); media.href = '#'; media.dataset.view = p.id;
+    media.innerHTML = '<div class="winBar"><span></span><i>_</i><i>□</i><i>×</i></div><div class="winBody"><img loading="lazy" alt=""></div>';
+    $('.winBar span', media).textContent = `${String(i + 1).padStart(2, '0')}_${p.id}.jpg`;
+    const img = $('img', media); img.src = IMG(p.cover); img.alt = p.name;
+    const info = el('div', 'featInfo');
+    info.append(el('span', 'featNum', `${String(i + 1).padStart(2, '0')} / ${String(NANO.projects.filter(x => x.featured).length).padStart(2, '0')}`));
+    info.append(el('h3', '', p.name));
+    info.append(el('p', 'featMeta', `${p.client} · ${p.year} · ${p.role}`));
+    info.append(el('p', 'featDesc', p.description));
+    const btns = el('div', 'featBtns');
+    const cs = el('button', 'btn', 'Case study →'); cs.dataset.case = p.id;
+    const gal = el('button', 'btn ghost', `Gallery (${(p.images || [p.cover]).length})`); gal.dataset.view = p.id;
+    btns.append(cs, gal); info.append(btns);
+    art.append(media, info); box.append(art);
+  });
+})();
+
+/* ---------- now @ DEPT: google 2026 ---------- */
+(function now() {
+  const box = $('#nowGrid');
+  NANO.projects.filter(p => p.group === 'google26').forEach(p => {
+    const b = el('button', 'card'); b.dataset.view = p.id;
+    b.innerHTML = '<div class="thumb"><img loading="lazy" alt=""></div><b></b><small></small>';
+    $('img', b).src = IMG(p.cover); $('img', b).alt = p.name;
+    $('b', b).textContent = p.name.replace(/^Google /, ''); $('small', b).textContent = p.role;
+    box.append(b);
+  });
+})();
+
+/* ---------- índice ---------- */
+(function index() {
+  const list = $('#indexList');
+  NANO.projects.filter(p => p.group === 'more').sort((a, b) => b.year - a.year).forEach(p => {
+    const li = el('li');
+    const b = el('button', 'indexRow'); b.dataset.view = p.id; b.dataset.peek = IMG(THUMB[p.id] || p.cover); b.dataset.peekTitle = `${p.id}.jpg`;
+    b.append(el('span', 'y', p.year), el('span', 't', p.name), el('span', 'c', p.client), el('span', 'r', p.role), el('span', 'a', '→'));
+    li.append(b); list.append(li);
+  });
+})();
+
+/* ---------- side B ---------- */
+(function sideB() {
+  const lab = $('#lab');
+  NANO.projects.filter(p => p.group === 'play').sort((a, b) => b.year - a.year).forEach(p => {
+    const li = el('li'), b = el('button', 'labRow'); b.dataset.view = p.id;
+    b.innerHTML = '<img loading="lazy" alt=""><div><small></small><b></b><p></p></div>';
+    $('img', b).src = IMG(p.cover); $('img', b).alt = p.name;
+    $('small', b).textContent = `${p.year} · ${p.role.toLowerCase()}`; $('b', b).textContent = p.name; $('p', b).textContent = p.context;
+    li.append(b); lab.append(li);
+  });
+  const ph = $('#photos');
+  NANO.photos.forEach(f => {
+    const a = el('a'); a.href = f.url; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = '<div class="thumb"><img loading="lazy" alt=""></div><span></span>';
+    $('img', a).src = IMG(f.cover); $('img', a).alt = f.name; $('span', a).textContent = f.name;
+    ph.append(a);
+  });
+})();
+
+/* ---------- nav: fondo al scrollear + sección activa ---------- */
+const nav = $('#nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
+const secIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) $$('.navLinks a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+}), { rootMargin: '-45% 0px -50% 0px' });
+['work', 'about', 'sideb', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px 10% 0px' });   // entra un poco antes de verse: scrolleando rápido no queda negro
+$$('.reveal').forEach(r => io.observe(r));
+
+/* ---------- reloj + contador (local, como en 2001: miente un poco) ---------- */
+(function clock() {
+  const c = $('#clock');
+  const tick = () => { c.textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date()) + ' in BS.AS.'; };
+  tick(); setInterval(tick, 30000);
+  let n = 4219; try { n = +(localStorage.getItem('clean.visits') || 4219 + Math.floor(Math.random() * 900)) + 1; localStorage.setItem('clean.visits', n); } catch (e) {}
+  $('#visits').textContent = String(n).padStart(6, '0');
+})();
+
+/* ---------- la cara te mira (guiño 2004) ---------- */
+if (finePointer && !reduceMotion) {
+  const face = $('.heroFace'); let raf = 0, mx = 0, my = 0;
+  addEventListener('pointermove', e => {
+    mx = e.clientX; my = e.clientY; if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0; const r = face.getBoundingClientRect(); if (r.bottom < 0) return;
+      const ry = Math.round(((mx - r.left - r.width / 2) / innerWidth) * 40 / 4) * 4, rx = Math.round((-(my - r.top - r.height / 2) / innerHeight) * 24 / 4) * 4;
+      face.style.transform = `perspective(700px) rotateY(${ry}deg) rotateX(${rx}deg) rotate(2deg)`;
+    });
+  }, { passive: true });
+}
+
+/* ---------- preview flotante del índice ---------- */
+if (finePointer) {
+  const peek = $('#peek'), pimg = $('img', peek), ptit = $('.winBar span', peek);
+  let tx = 0, ty = 0, cx = 0, cy = 0, run = false;
+  const loop = () => { cx += (tx - cx) * .18; cy += (ty - cy) * .18; peek.style.transform = `translate(${cx + 24}px,${cy - 120}px)`; if (run) requestAnimationFrame(loop); };
+  $$('[data-peek]').forEach(r => {
+    r.addEventListener('pointerenter', e => { pimg.src = r.dataset.peek; ptit.textContent = r.dataset.peekTitle; tx = cx = e.clientX; ty = cy = e.clientY; peek.classList.add('on'); if (!run) { run = true; loop(); } });
+    r.addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; });
+    r.addEventListener('pointerleave', () => { peek.classList.remove('on'); run = false; });
+  });
+}
+
+/* ---------- capas (visor / case): bloquear scroll y devolver foco ---------- */
+let lastFocus = null;
+const lock = (box, on) => {
+  box.hidden = !on;
+  document.documentElement.classList.toggle('locked', !$('#viewer').hidden || !$('#case').hidden);
+  if (on) { lastFocus = document.activeElement; setTimeout(() => $('button', box)?.focus(), 30); } else lastFocus?.focus?.();
+};
+
+/* ---------- visor de galería ---------- */
+const Viewer = (() => {
+  const box = $('#viewer'), img = $('.viewerStage img', box);
+  let p = null, imgs = [], i = 0;
+  const show = () => {
+    img.src = IMG(imgs[i]); img.alt = `${p.name} — ${i + 1}`;
+    $('.viewerCount', box).textContent = `${String(i + 1).padStart(2, '0')} / ${String(imgs.length).padStart(2, '0')}`;
+    $$('.viewerNav', box).forEach(b => b.style.visibility = imgs.length > 1 ? '' : 'hidden');
+  };
+  function open(id, start = 0) {
+    p = P(id); if (!p) return; imgs = p.images?.length ? p.images : [p.cover]; i = start;
+    $('.viewerTitle', box).textContent = `${p.name} — ${p.client} · ${p.year}`;
+    $('.viewerText', box).textContent = p.description;
+    const link = $('.viewerLink', box); link.hidden = !p.url; if (p.url) link.href = p.url;
+    show(); lock(box, true);
+  }
+  const go = d => { i = (i + d + imgs.length) % imgs.length; show(); };
+  box.addEventListener('click', e => {
+    const a = e.target.closest('[data-v]')?.dataset.v;
+    if (a === 'close') lock(box, false); else if (a === 'prev') go(-1); else if (a === 'next') go(1);
+    else if (e.target === img && imgs.length > 1) go(e.offsetX < img.clientWidth / 2 ? -1 : 1);   // en el celu: tocar la mitad
+  });
+  addEventListener('keydown', e => {
+    if (box.hidden) return;
+    e.stopImmediatePropagation();   // la galería es la capa de arriba: que el case study no reciba la misma tecla
+    if (e.key === 'Escape') lock(box, false); else if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
+  });
+  return { open };
+})();
+
+/* ---------- case study por capítulos ----------
+   se arma con context / did / why / images de cada proyecto en data.js */
+const Case = (() => {
+  const box = $('#case'), stage = $('.caseStage', box), dots = $('.caseDots', box);
+  let p = null, ch = [], i = 0;
+  const build = q => [
+    { k: `${q.client} · ${q.year}`, t: q.name, x: q.role + '. ' + q.description, img: q.cover },
+    { k: '01 — The brief', t: 'The brief', x: q.context, img: q.images?.[1] || q.cover },
+    { k: '02 — What I did', t: 'What I did', x: q.did, gal: (q.images || []).slice(1, 4) },
+    { k: '03 — Why it works', t: 'Why it works', x: q.why, img: q.cover },
+    { k: 'End', t: 'Thanks for watching.', x: 'Want the full project, or the human behind it?', end: true },
+  ];
+  function render() {
+    const c = ch[i]; stage.innerHTML = '';
+    const s = el('div', 'caseSlide' + (c.end || (!c.img && !c.gal?.length) ? ' text' : ''));
+    if (c.img) {
+      const f = el('figure', 'caseArt win'); f.style.margin = '0';
+      f.innerHTML = '<div class="winBar"><span></span><i>_</i><i>□</i><i>×</i></div><div class="winBody"><img alt=""></div>';
+      $('.winBar span', f).textContent = c.img; $('img', f).src = IMG(c.img); $('img', f).alt = p.name; s.append(f);
+    } else if (c.gal?.length) {
+      const g = el('div', 'caseGal');
+      c.gal.forEach((im, n) => { const b = el('button'); b.innerHTML = '<img alt="">'; $('img', b).src = IMG(im); $('img', b).alt = `${p.name} — ${n + 2}`; b.onclick = () => Viewer.open(p.id, n + 1); g.append(b); });
+      s.append(g);
+    }
+    const copy = el('div', 'caseCopy');
+    copy.append(el('small', '', c.k), el('h2', '', c.t), el('p', '', c.x));
+    if (c.end) {
+      const e = el('div', 'caseEnd');
+      if (p.url) { const a = el('a', 'btn', 'Open on Behance ↗'); a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; e.append(a); }
+      const g = el('button', 'btn ghost', 'Gallery'); g.onclick = () => Viewer.open(p.id);
+      const c2 = el('a', 'btn ghost', 'Contact'); c2.href = '#contact'; c2.onclick = () => lock(box, false);
+      e.append(g, c2); copy.append(e);
+    }
+    s.append(copy); stage.append(s); stage.scrollTop = 0;
+    $('.caseProg i', box).style.width = `${(i / (ch.length - 1)) * 100}%`;
+    $$('i', dots).forEach((d, n) => d.classList.toggle('on', n === i));
+    $('[data-c=prev]', box).disabled = i === 0; $('[data-c=next]', box).disabled = i === ch.length - 1;
+  }
+  function open(id) {
+    p = P(id); if (!p) return; ch = build(p); i = 0;
+    $('.caseTitle', box).textContent = `Case study — ${p.name}`;
+    dots.innerHTML = ''; ch.forEach(() => dots.append(el('i')));
+    render(); lock(box, true);
+  }
+  const go = d => { const n = Math.max(0, Math.min(ch.length - 1, i + d)); if (n !== i) { i = n; render(); } };
+  box.addEventListener('click', e => {
+    const a = e.target.closest('[data-c]')?.dataset.c;
+    if (a === 'close') lock(box, false); else if (a === 'prev') go(-1); else if (a === 'next') go(1);
+  });
+  addEventListener('keydown', e => {
+    if (box.hidden || !$('#viewer').hidden) return;
+    if (e.key === 'Escape') lock(box, false); else if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
+  });
+  return { open };
+})();
+
+/* ---------- delegados: abrir visor / case ---------- */
+document.addEventListener('click', e => {
+  const c = e.target.closest('[data-case]'); if (c) { e.preventDefault(); Case.open(c.dataset.case); return; }
+  const v = e.target.closest('[data-view]'); if (v && !v.closest('#viewer')) { e.preventDefault(); Viewer.open(v.dataset.view); }
+});
