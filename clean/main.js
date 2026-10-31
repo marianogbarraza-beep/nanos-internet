@@ -156,7 +156,7 @@ if (finePointer && !reduceMotion) {
 /* ---------- reloj + contador (local, como en 2001: miente un poco) ---------- */
 (function clock() {
   const c = $('#clock');
-  const tick = () => { c.textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date()) + ' in BS.AS.'; };
+  const tick = () => { const t = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date()); c.textContent = t + ' in BS.AS.'; $('#clockTray').textContent = t; };
   tick(); setInterval(tick, 30000);
   let n = 4219; try { n = +(localStorage.getItem('clean.visits') || 4219 + Math.floor(Math.random() * 900)) + 1; localStorage.setItem('clean.visits', n); } catch (e) {}
   $('#visits').textContent = String(n).padStart(6, '0');
