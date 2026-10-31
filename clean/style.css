@@ -70,6 +70,9 @@ html.hasCursor,html.hasCursor a,html.hasCursor button{cursor:none}
 /* ---------- hero ---------- */
 /* el hero es un escritorio: teal, íconos, la ventana con tu cara */
 .hero{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding:96px var(--pad) 28px;overflow:hidden;background:var(--teal);color:var(--paper)}
+/* las nubes del escritorio de Win98, muy abajo: ruido suavizado que se desplaza despacio */
+.hero::before{content:"";position:absolute;inset:-20%;pointer-events:none;opacity:.22;mix-blend-mode:screen;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0022' numOctaves='5' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E") 0 0/900px 900px;animation:clouds 120s linear infinite}
+@keyframes clouds{to{background-position:900px 300px}}
 .heroBig{position:absolute;right:-.04em;bottom:-.18em;font:900 clamp(200px,38vw,620px)/1 var(--display);font-variation-settings:'wdth' 62;color:transparent;-webkit-text-stroke:1px rgba(241,238,230,.14);pointer-events:none;user-select:none;letter-spacing:-.02em;will-change:transform}
 .hero .path,.heroWho span{color:rgba(241,238,230,.65)}
 .heroWho{color:var(--paper)}
