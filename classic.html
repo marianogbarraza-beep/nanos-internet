@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NANO'S INTERNET — Nano García Barraza, Senior Visual Designer</title>
+<meta name="description" content="Welcome to my personal internet. Nano García Barraza, Senior Visual Designer (DEPT®). Campaigns, identities & digital experiences. Best viewed at 1024×768."/>
+<meta name="theme-color" content="#000000">
+<!-- preview para LinkedIn / WhatsApp. og:image tiene que ser una URL absoluta: si cambiás de dominio, cambiala acá -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marianogbarraza-beep.github.io/nanos-internet/classic.html">
+<meta property="og:title" content="NANO'S INTERNET — Nano García Barraza, Senior Visual Designer">
+<meta property="og:description" content="Welcome to my personal internet. Campaigns, identities & digital experiences. Google · Netflix · Chevy. Best viewed at 1024×768.">
+<meta property="og:image" content="https://marianogbarraza-beep.github.io/nanos-internet/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/system.css">
+<noscript><style>.reveal{opacity:1;transform:none}.loader,.taskbar,.clippy,.splash{display:none}.tabPane[hidden]{display:block}</style></noscript>
+</head>
+<body>
+
+<!-- ============ sprite de íconos (pixel, 16×16) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-face" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" fill="#e6e4d8"/><rect x="2" y="2" width="12" height="12" fill="#3b5f8a"/><rect x="5" y="4" width="6" height="8" fill="#e3b58a"/><rect x="5" y="3" width="6" height="2" fill="#2b1a10"/><rect x="4" y="4" width="1" height="3" fill="#2b1a10"/><rect x="11" y="4" width="1" height="3" fill="#2b1a10"/><rect x="6" y="7" width="1" height="1" fill="#111"/><rect x="9" y="7" width="1" height="1" fill="#111"/><rect x="7" y="10" width="2" height="1" fill="#8a3d2b"/><rect x="4" y="12" width="8" height="2" fill="#39ff14"/></symbol>
+  <symbol id="i-amp" viewBox="0 0 16 16"><rect x="1" y="5" width="3" height="6" fill="#bbb"/><rect x="4" y="4" width="2" height="8" fill="#e6e4d8"/><rect x="6" y="2" width="2" height="12" fill="#e6e4d8"/><rect x="10" y="6" width="1" height="4" fill="#39ff14"/><rect x="12" y="4" width="1" height="8" fill="#39ff14"/><rect x="14" y="2" width="1" height="12" fill="#39ff14"/></symbol>
+  <symbol id="i-msn" viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" fill="#5ad35a"/><rect x="1" y="8" width="7" height="6" fill="#5ad35a"/><rect x="9" y="3" width="5" height="5" fill="#ff9a2e"/><rect x="8" y="9" width="7" height="5" fill="#ff9a2e"/><rect x="3" y="4" width="1" height="1" fill="#000"/><rect x="5" y="4" width="1" height="1" fill="#000"/><rect x="10" y="5" width="1" height="1" fill="#000"/><rect x="12" y="5" width="1" height="1" fill="#000"/></symbol>
+  <symbol id="i-txt" viewBox="0 0 16 16"><rect x="3" y="1" width="10" height="14" fill="#fff"/><rect x="10" y="1" width="3" height="3" fill="#999"/><rect x="5" y="5" width="6" height="1" fill="#333"/><rect x="5" y="7" width="6" height="1" fill="#333"/><rect x="5" y="9" width="4" height="1" fill="#333"/><rect x="5" y="11" width="5" height="1" fill="#333"/></symbol>
+  <symbol id="i-pdf" viewBox="0 0 16 16"><rect x="3" y="1" width="10" height="14" fill="#fff"/><rect x="10" y="1" width="3" height="3" fill="#999"/><rect x="4" y="8" width="8" height="5" fill="#c62828"/><rect x="5" y="9" width="2" height="1" fill="#fff"/><rect x="5" y="11" width="1" height="1" fill="#fff"/><rect x="8" y="9" width="1" height="3" fill="#fff"/><rect x="10" y="9" width="2" height="1" fill="#fff"/><rect x="10" y="11" width="1" height="1" fill="#fff"/></symbol>
+  <symbol id="i-bin" viewBox="0 0 16 16"><rect x="6" y="1" width="4" height="1" fill="#bbb"/><rect x="3" y="2" width="10" height="2" fill="#ddd"/><rect x="4" y="4" width="8" height="10" fill="#9aa3a8"/><rect x="6" y="6" width="1" height="6" fill="#3a444a"/><rect x="9" y="6" width="1" height="6" fill="#3a444a"/><rect x="5" y="14" width="6" height="1" fill="#6b7479"/></symbol>
+  <symbol id="i-err" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" fill="#c62828"/><rect x="5" y="5" width="2" height="2" fill="#fff"/><rect x="9" y="5" width="2" height="2" fill="#fff"/><rect x="7" y="7" width="2" height="2" fill="#fff"/><rect x="5" y="9" width="2" height="2" fill="#fff"/><rect x="9" y="9" width="2" height="2" fill="#fff"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 16 16"><path d="M5 13V4a3 3 0 0 1 6 0v8a2 2 0 0 1-4 0V5" fill="none" stroke="#333" stroke-width="1.6"/><rect x="5" y="5" width="2" height="2" fill="#fff"/><rect x="9" y="5" width="2" height="2" fill="#fff"/><rect x="6" y="6" width="1" height="1" fill="#000"/><rect x="10" y="6" width="1" height="1" fill="#000"/></symbol>
+  <symbol id="i-go" viewBox="0 0 16 16"><rect x="2" y="7" width="8" height="2" fill="#000080"/><rect x="9" y="4" width="2" height="8" fill="#000080"/><rect x="11" y="6" width="2" height="4" fill="#000080"/><rect x="13" y="7" width="1" height="2" fill="#000080"/></symbol>
+  <symbol id="i-snd" viewBox="0 0 16 16"><rect x="2" y="6" width="3" height="4" fill="#555"/><rect x="5" y="4" width="2" height="8" fill="#888"/><rect x="7" y="2" width="2" height="12" fill="#888"/><rect x="11" y="6" width="1" height="4" fill="#000080"/><rect x="13" y="4" width="1" height="8" fill="#000080"/></symbol>
+  <symbol id="i-crt" viewBox="0 0 16 16"><rect x="1" y="2" width="14" height="10" fill="#bbb"/><rect x="2" y="3" width="12" height="8" fill="#0000aa"/><rect x="3" y="4" width="10" height="1" fill="#39ff14"/><rect x="3" y="6" width="6" height="1" fill="#39ff14"/><rect x="5" y="13" width="6" height="2" fill="#888"/></symbol>
+  <symbol id="i-off" viewBox="0 0 16 16"><rect x="7" y="1" width="2" height="6" fill="#ff2a2a"/><rect x="3" y="4" width="2" height="2" fill="#555"/><rect x="11" y="4" width="2" height="2" fill="#555"/><rect x="2" y="6" width="2" height="5" fill="#555"/><rect x="12" y="6" width="2" height="5" fill="#555"/><rect x="3" y="11" width="2" height="2" fill="#555"/><rect x="11" y="11" width="2" height="2" fill="#555"/><rect x="5" y="13" width="6" height="2" fill="#555"/></symbol>
+  <symbol id="i-img" viewBox="0 0 16 16"><rect x="1" y="2" width="14" height="12" fill="#fff" stroke="#000"/><rect x="2" y="3" width="12" height="10" fill="#3b7dd8"/><rect x="2" y="9" width="12" height="4" fill="#2a8a3c"/><rect x="10" y="4" width="3" height="3" fill="#ffe34d"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 16 16"><rect x="1" y="2" width="3" height="1" fill="#333"/><rect x="3" y="3" width="1" height="7" fill="#333"/><rect x="4" y="4" width="10" height="5" fill="#ff9900"/><rect x="5" y="5" width="2" height="1" fill="#fff"/><rect x="3" y="10" width="11" height="1" fill="#333"/><rect x="4" y="12" width="2" height="2" fill="#000080"/><rect x="11" y="12" width="2" height="2" fill="#000080"/></symbol>
+  <symbol id="i-tour" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" fill="#ffe600" stroke="#000"/><path d="M4 11l3-5 2 3 1-2 2 4z" fill="#000"/><circle cx="11" cy="5" r="1.5" fill="#c62828"/></symbol>
+</svg>
+
+<!-- ============ boot ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loaderBox">
+    <div class="loaderTop"><span>Starting nano's internet…</span><span id="bootPct">0%</span></div>
+    <div class="loadbar"><i id="bootBar"></i></div>
+    <div class="bootLog" id="bootLog"></div>
+    <div class="bootHint">press any key to skip</div>
+  </div>
+</div>
+<div class="stars"></div><div class="stars b"></div><div class="wall"></div>
+<div class="noise"></div><div class="scan"></div>
+<div class="trail" id="trail" aria-hidden="true"></div>
+<div class="bsod" id="bsod" hidden></div>
+
+<!-- splash ENTER (una vez por sesión) -->
+<div class="splash" id="splash">
+  <div class="splashBox">
+    <img src="img/retro-face.gif" alt="" class="splashFace">
+    <div class="splashTitle">Nano's Internet</div>
+    <p class="splashSub">~ senior visual designer @ DEPT® ~ buenos aires → everywhere ~</p>
+    <p class="splashWarn">⚠ this site contains: gifs, a paperclip, synthesized music, excessive clicking.<br>best viewed at 1024×768. no plug-in required.</p>
+    <div class="splashBtns"><button class="enterBtn" data-enter="sound">ENTER <small>full experience, with sound ♪</small></button><button class="enterBtn quiet" data-enter="quiet">enter <small>quietly</small></button></div>
+    <button class="recruiterBtn" data-enter="recruiter">I'm a recruiter. Just show me the work →</button>
+    <p class="splashFoot"><span class="blinkTxt">►</span> skip intro? there is no intro. this is it.</p>
+  </div>
+</div>
+
+<!-- screensaver -->
+<div class="saver" id="saver" hidden aria-hidden="true">
+  <div class="saverLogo">nano<small>'s internet</small></div>
+  <img class="drift" src="img/retro-disco.gif" alt=""><img class="drift" src="img/retro-wing-disc.gif" alt=""><img class="drift" src="img/retro-alien-dj.gif" alt=""><img class="drift" src="img/retro-floppy-pal.gif" alt=""><img class="drift" src="img/retro-eye.gif" alt=""><img class="drift" src="img/retro-crt-walk.gif" alt="">
+  <div class="saverHint">move the mouse to wake up · screensaver.scr</div>
+</div>
+
+<!-- menú de click derecho -->
+<div class="ctx" id="ctx" hidden>
+  <button data-ctx="back">← Back</button><button data-ctx="forward">→ Forward</button><button data-ctx="refresh">Refresh</button>
+  <div class="startSep"></div>
+  <button data-ctx="amp">Open nanoamp</button><button data-ctx="random">Random work</button><button data-ctx="tour">30-second tour</button>
+  <div class="startSep"></div>
+  <button data-ctx="wall">Set as wallpaper ▸</button><button data-ctx="source">View source</button>
+  <div class="startSep"></div>
+  <button data-ctx="props"><b>Properties</b></button>
+</div>
+
+<div class="site">
+<!-- ============ banner ============ -->
+<header class="banner">
+  <div class="topRow">
+    <a class="logo" href="#top" title="click me 5 times. fast.">nano://barrazza <small>est. on earth</small></a>
+    <div class="sys">
+      <span class="sound" role="button" tabindex="0" title="UI blips, synthesized">sound: <b>[off]</b></span>
+      <span title="you are visitor number">visitor <b id="visits">000000</b></span>
+      <span>bs.as. <b id="clock">--:--</b></span>
+    </div>
+  </div>
+  <h1 class="wordart"><i class="spark"></i><i class="spark"></i><i class="spark"></i>Nano's Internet</h1>
+  <p class="tagline">~*~ nano garcía barraza ~ <em>senior visual designer</em> ~ buenos aires → everywhere ~*~</p>
+  <div class="heroTag">campaigns, identities &amp; digital experiences. currently at dept®, designing for google.</div>
+  <div class="construction"><span>★ this site is a work in progress ★ since 2001 ★</span></div>
+</header>
+
+<!-- ============ columna izquierda ============ -->
+<aside class="col colL">
+  <nav class="navBox nav" aria-label="main">
+    <a href="#top">Main</a><a href="#work">Work.exe</a><a href="#about">About me</a><a href="#sideb" data-tab="photo">Photography</a><a href="#sideb" data-tab="play">Experiments</a><a href="#contact" class="alt">Guestbook</a>
+  </nav>
+  <div class="gbox">
+    <h4>my computer</h4>
+    <div class="desk" aria-label="desktop">
+      <button class="deskIcon" data-open="face"><img src="img/retro-face.gif" alt=""><span>who_is_nano.gif</span></button>
+      <button class="deskIcon" data-go="#work"><img src="img/retro-folder.gif" alt=""><span>work\</span></button>
+      <button class="deskIcon" data-open="shop"><svg><use href="#i-cart"/></svg><span>hire_nano.shop</span></button>
+      <button class="deskIcon" data-resume><svg><use href="#i-pdf"/></svg><span>resume.pdf</span></button>
+      <button class="deskIcon" data-open="makingof"><svg><use href="#i-txt"/></svg><span>making_of.txt</span></button>
+      <button class="deskIcon" data-open="amp"><img src="img/retro-vinyl.gif" alt=""><span>nanoamp</span></button>
+      <button class="deskIcon" data-open="msn"><img src="img/retro-mail.gif" alt=""><span>msn</span></button>
+      <button class="deskIcon" data-go="#sideb" data-tab="photo"><img src="img/retro-camera.gif" alt=""><span>photos\</span></button>
+      <button class="deskIcon" data-act="tour"><svg><use href="#i-tour"/></svg><span>30s tour</span></button>
+      <button class="deskIcon" data-open="readme"><img src="img/retro-mug.gif" alt=""><span>coffee break</span></button>
+      <button class="deskIcon" data-act="crt"><img src="img/retro-crt.gif" alt=""><span>crt mode</span></button>
+      <button class="deskIcon" data-open="recycle"><img src="img/retro-floppy-pal.gif" alt=""><span>recycle bin</span></button>
+    </div>
+  </div>
+  <div class="counterBox">you are visitor<br><b id="visitsBig">000000</b><br><span class="blinkTxt">since 2001</span></div>
+  <div class="gbox purple centerp"><h4>status</h4><span class="rainbow">online</span><br>now at: <b>DEPT®</b><br>mood: <b>building stuff</b><br>playing: <a href="#" data-open="amp">slow connection.mod</a></div>
+</aside>
+
+<!-- ============ main ============ -->
+<main id="top">
+
+  <!-- hero -->
+  <section class="hero" data-sec="home">
+    <img class="floater f1" src="img/retro-alien-dj.gif" alt="" aria-hidden="true">
+    <img class="floater f2" src="img/retro-wing-disc.gif" alt="" aria-hidden="true">
+    <img class="floater f3" src="img/retro-eye.gif" alt="" aria-hidden="true">
+    <img class="floater f4" src="img/retro-disc.gif" alt="" aria-hidden="true">
+
+    <a class="panel welcome" href="#about"><h3>Welcome<br>to my page!</h3><span>the person behind the pixels · enter at your own risk!</span></a>
+    <a class="panel red work" href="#work"><h3>Work-o-rama</h3><span>google · netflix · chevy + 13 more files</span></a>
+    <a class="panel orange photo" href="#sideb" data-tab="photo"><h3>Photo spy</h3><span>chile · méxico · búzios · dept after hours</span></a>
+
+    <div class="panel face">
+      <div class="faceTitle">WHO_IS_NANO.GIF <i>[−]</i></div>
+      <div class="faceCut"><img src="img/retro-face.gif" alt="Nano, animated" title="click: open who_is_nano.gif"><div class="missing"><b>nano.gif</b>drop your photo here:<code>img/retro-face.gif</code></div></div>
+      <div class="faceCap"><b>yes, a real person.</b> nano garcía barraza</div>
+      <!-- la "personal message" de MSN: el posicionamiento en una línea (texto en data.js → NANO.status.line) -->
+      <div class="msnStatus"><span class="msnDot"></span><b>nano</b><i id="statusLine">senior visual designer @ DEPT® · making Google things · campaigns, identities &amp; digital experiences</i></div>
+    </div>
+
+    <div class="panel todo"><b>To Do:</b><br>☑ break the template<br>☑ keep taste<br>☑ ship google skills<br>☐ reply to recruiters<br>☐ stop adding easter eggs<br>☐ close some tabs (lol)</div>
+
+    <a class="panel playp" href="#sideb" data-tab="play">
+      <div class="cdTop"><span>side b</span><span>3 tracks</span></div>
+      <h3>▶ Play</h3>
+      <div class="cdSub">experiments &amp; personal work</div>
+      <div class="cdDisc"></div>
+      <div class="cdTracks">
+        <div><img src="img/cd-ai-posters.jpg" alt=""><span>01 · ai posters</span></div>
+        <div><img src="img/cd-summer-stickers.jpg" alt=""><span>02 · summer stickers</span></div>
+        <div><img src="img/cd-diskhe-retro.jpg" alt=""><span>03 · disKHE?! retro</span></div>
+      </div>
+      <small>insert disc · click to open ↓</small>
+    </a>
+
+    <div class="panel mail"><span class="arrow">➜</span><b>e-mail nano</b><form class="quickMail" data-quick><input name="quick" placeholder="type something and hit enter" autocomplete="off"><input type="submit" hidden></form><small>opens my msn · zumbido included</small></div>
+
+    <div class="bigline">designing things people actually want to look at — <span>no perfect pixels were harmed</span></div>
+  </section>
+
+  <!-- marquee -->
+  <div class="marquee" aria-hidden="true"><div class="track">
+    <span>★ welcome to my personal internet</span><span>★ designing things people actually want to look at</span><span>★ no perfect pixels were harmed</span><span>★ senior visual designer @ dept® · buenos aires → everywhere</span><span>★ best viewed at 1024×768 with netscape 4.7</span><span>★ press <em>↑ ↑ ↓ ↓ ← → ← → B A</em></span><span>★ sign my guestbook!!!</span><span>★ contents may cause excessive clicking</span>
+    <span>★ welcome to my personal internet</span><span>★ designing things people actually want to look at</span><span>★ no perfect pixels were harmed</span><span>★ senior visual designer @ dept® · buenos aires → everywhere</span><span>★ best viewed at 1024×768 with netscape 4.7</span><span>★ press <em>↑ ↑ ↓ ↓ ← → ← → B A</em></span><span>★ sign my guestbook!!!</span><span>★ contents may cause excessive clicking</span>
+  </div></div>
+
+  <!-- work -->
+  <section class="section" id="work" data-sec="work">
+    <div class="secIndex">[1] // index of c:\nano\work\ — 16 files found ▮▮▮▮▮</div>
+    <h2 class="glitter c">Selected work</h2>
+    <div class="divider"></div>
+
+    <!-- NOW: lo más reciente primero -->
+    <div class="nowStrip reveal">
+      <div class="nowHead"><span class="nowDot"></span><b>NOW</b> currently at DEPT® designing for Google — product pages, campaigns &amp; digital experiences · 2026 <span class="new static">NEW!</span></div>
+      <div class="moreGrid g5">
+        <a class="more" href="#" data-project="fitbit-air"><img loading="lazy" src="img/google-trey-0.webp" alt="Google Fitbit Air × Stephen Curry"><span>Fitbit Air × Stephen Curry</span></a>
+        <a class="more" href="#" data-project="pixel-watch"><img loading="lazy" src="img/google-watch-0.webp" alt="Google Pixel Watch"><span>Pixel Watch</span></a>
+        <a class="more" href="#" data-project="pixel-phone"><img loading="lazy" src="img/google-pixel-0.webp" alt="Google Pixel"><span>Pixel</span></a>
+        <a class="more" href="#" data-project="pixel-tag"><img loading="lazy" src="img/google-pixel-5.webp" alt="Google Pixel Tag"><span>Pixel Tag</span></a>
+        <a class="more" href="#" data-project="pixel-cases"><img loading="lazy" src="img/google-pixel-6.webp" alt="Google Pixel Cases"><span>Pixel Cases</span></a>
+      </div>
+    </div>
+
+    <p class="subhead">visual identities / campaigns / concept design · <span class="blinkTxt">03 featured</span> / 08 more files below</p>
+    <div class="projectList">
+      <a class="projectRow reveal" href="#google-skills"><div class="pimg"><img loading="lazy" src="img/google.webp" alt="Google Skills"></div><div><div class="pname">Google Skills</div><div class="pmeta">google / visual identity &amp; concept / 2025</div></div><div class="pnum">01</div></a>
+      <a class="projectRow reveal" href="#netflix-ads"><div class="pimg"><img loading="lazy" src="img/netflix.webp" alt="Netflix Ads"></div><div><div class="pname">Netflix Ads — Conference</div><div class="pmeta">netflix / presentation design / 2025</div></div><div class="pnum">02</div></a>
+      <a class="projectRow reveal" href="#chevy-ev"><div class="pimg"><img loading="lazy" src="img/chevy.webp" alt="Chevy EV"></div><div><div class="pname">Chevy EV — Concept Design</div><div class="pmeta">chevrolet / graphic design · concept / 2025</div></div><div class="pnum">03</div></a>
+    </div>
+
+    <div class="projectDetail reveal" id="google-skills"><div class="wbar"><span>01 / GOOGLE_SKILLS.HTML — Image Viewer</span><i>_</i><i>□</i><i>×</i></div><div class="wmenu"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div><div class="detailGrid"><div class="detailArt"><img loading="lazy" src="img/google.webp" alt="Google Skills campaign with bold blue and green shapes and the words Learn, grow, succeed."></div><div class="detailCopy"><div><h3>Google Skills</h3><p>Visual identity and concept development for the Google Skills campaign. A graphic system built around bold compositions, clear typography and a vibrant palette.</p><div class="lines" data-lines="google-skills"></div></div><div><div class="tags"><span class="tag">google</span><span class="tag">visual identity</span><span class="tag">concept</span><span class="tag">2025</span></div><a class="btn hi openOrig" href="https://www.behance.net/gallery/234494801/Google-Skills-25" target="_blank" rel="noopener">[ open original on behance ↗ ]</a> <a class="btn openOrig" href="#" data-project="google-skills">[ all images ]</a> <a class="btn caseBtn" href="#" data-case-open="google-skills">▶ play the case study</a></div></div></div></div>
+    <div class="projectDetail reveal" id="netflix-ads"><div class="wbar"><span>02 / NETFLIX_ADS.JPG — Image Viewer</span><i>_</i><i>□</i><i>×</i></div><div class="wmenu"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div><div class="detailGrid"><div class="detailArt"><img loading="lazy" src="img/netflix.webp" alt="A collection of colorful Netflix Ads conference presentation layouts."></div><div class="detailCopy"><div><h3>Netflix Ads — Conference</h3><p>Slides created for a Netflix Brazil conference. A selection of presentation layouts, graphic elements and applications from the project.</p><div class="lines" data-lines="netflix-ads"></div></div><div><div class="tags"><span class="tag">netflix</span><span class="tag">presentation design</span><span class="tag">event</span><span class="tag">2025</span></div><a class="btn hi openOrig" href="https://www.behance.net/gallery/219025469/Netflix-ADs-Conference" target="_blank" rel="noopener">[ open original on behance ↗ ]</a> <a class="btn openOrig" href="#" data-project="netflix-ads">[ all images ]</a> <a class="btn caseBtn" href="#" data-case-open="netflix-ads">▶ play the case study</a></div></div></div></div>
+    <div class="projectDetail reveal" id="chevy-ev"><div class="wbar"><span>03 / CHEVY_EV.ZIP — Image Viewer</span><i>_</i><i>□</i><i>×</i></div><div class="wmenu"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div><div class="detailGrid"><div class="detailArt"><img loading="lazy" src="img/chevy.webp" alt="Bright yellow Chevrolet Equinox EV concept design featuring expressive black typography."></div><div class="detailCopy"><div><h3>Chevy EV — Concept Design</h3><p>Graphic design explorations for the Chevrolet Equinox EV. A study in bold typography, color and dynamic composition.</p><div class="lines" data-lines="chevy-ev"></div></div><div><div class="tags"><span class="tag">chevrolet</span><span class="tag">concept</span><span class="tag">graphic design</span><span class="tag">2025</span></div><a class="btn hi openOrig" href="https://www.behance.net/gallery/231659939/Chevy-EV-Concept-Design" target="_blank" rel="noopener">[ open original on behance ↗ ]</a> <a class="btn openOrig" href="#" data-project="chevy-ev">[ all images ]</a> <a class="btn caseBtn" href="#" data-case-open="chevy-ev">▶ play the case study</a></div></div></div></div>
+
+    <div class="divider"></div>
+    <h3 class="subtitle"><img src="img/retro-folder.gif" alt="" class="inlineGif">c:\nano\work\deep_cuts\ — more to discover</h3>
+    <div class="moreGrid g5">
+      <a class="more reveal" href="#" data-project="christmas"><img loading="lazy" src="img/th-christmas.jpg" alt="Christmas Google 25"><span>Christmas Google 25</span></a>
+      <a class="more reveal" href="#" data-project="trubit"><img loading="lazy" src="img/th-trubit.jpg" alt="Trubit crypto card"><span>Trubit — Crypto Card</span></a>
+      <a class="more reveal" href="#" data-project="diskhe"><img loading="lazy" src="img/th-diskhe.jpg" alt="Diskhe posters"><span>Diskhe Posters</span></a>
+      <a class="more reveal" href="#" data-project="soledad"><img loading="lazy" src="img/th-soledad.jpg" alt="100 años de Soledad"><span>100 años de Soledad</span></a>
+      <a class="more reveal" href="#" data-project="altra"><img loading="lazy" src="img/th-altra.jpg" alt="Altra pitch"><span>Altra Pitch</span></a>
+    </div>
+    <p class="centerp"><a class="btn hi" href="https://www.behance.net/marianogbarraza" target="_blank" rel="noopener">[ view complete behance archive ↗ ]</a></p>
+  </section>
+
+  <div class="quoteBand reveal"><h2 class="glitter fire nos">No disposable work!!</h2><p>Every piece should say something about the designer behind it. Even the cleanest system needs a point of view.</p></div>
+
+  <!-- about -->
+  <section class="section" id="about" data-sec="about">
+    <div class="secIndex">[2] // about_me.txt / unsaved thoughts — file: human / location: bue / format: designer</div>
+    <h2 class="glitter">About me</h2>
+    <div class="divider"></div>
+    <div class="aboutGrid reveal">
+      <div class="gbox">
+        <h4>there's a person in this machine</h4>
+        <p>I'm Nano Garcia Barraza, a visual designer based in Buenos Aires. Currently <b>Senior Visual Designer at DEPT®</b>, designing for Google.</p>
+        <p>Images, typography, visual identities. And an unreasonable number of open tabs.</p>
+        <p>Outside the work folder: photography, technology, games and the weird corners of the internet. I grew up on dial-up, msn, winamp skins and geocities pages with "under construction" gifs. That internet was ugly, slow and <b>completely alive</b>. I try to keep the alive part.</p>
+        <p class="frag g">2004: FrontPage, 56k, one GIF per hour. 2026: an idea becomes something you can click in one afternoon. <em>¿y si armamos lo que sea?</em> The tools got fast. Taste is still the slow part — and the part that matters. <a href="#" data-open="makingof">→ making_of.txt</a></p>
+        <div class="altEgo"><img src="img/retro-about-face-v2.png" alt="Nano, alter ego"><div><b>NANO_ALTER_EGO.GIF</b><br>same human. different frequency.</div></div>
+      </div>
+      <div class="col">
+        <div class="gbox purple">
+          <h4>experience.log</h4>
+          <table class="statTable">
+            <tr><td><span class="blinkTxt">now ●</span> DEPT®</td><td><b>Senior Visual Designer</b><br>Visual design for Google — product pages, campaigns and digital experiences.</td></tr>
+            <tr><td>2021 – 2025</td><td><b>Media.Monks</b><br>Senior Digital Designer · Photo Retoucher</td></tr>
+            <tr><td>2018 – 2021</td><td><b>Accenture</b><br>Senior Designer, Graphic Design</td></tr>
+            <tr><td>2017 – 2018</td><td><b>SPG</b><br>Editorial Designer</td></tr>
+            <tr><td>2015 – 2017</td><td><b>Fundación Gutenberg</b><br>Designer / Community Manager</td></tr>
+          </table>
+          <p class="muted3">from curious creator to full-time designer.</p>
+          <div class="whatIdo"><b>what i do:</b> <span class="tag">art direction</span><span class="tag">campaigns</span><span class="tag">visual identities</span><span class="tag">digital experiences</span><span class="tag">product storytelling</span><span class="tag">presentation design</span><span class="tag">photography</span></div>
+          <p class="centerp" style="margin:8px 0 0"><a href="https://www.linkedin.com/in/mariano-leonel-garcia-barraza-686a1299/" target="_blank" rel="noopener">full experience on linkedin ↗</a> · <a href="#" data-resume>resume.pdf</a> · <a href="#" data-open="shop">hire_nano.shop</a></p>
+        </div>
+        <div class="gbox cyan">
+          <h4>off-screen obsessions</h4>
+          <div class="obsessions">
+            <span><img src="img/retro-crt.gif" alt="">CRTs</span><span><img src="img/retro-console.gif" alt="">consoles</span><span><img src="img/retro-vinyl.gif" alt="">vinyl</span><span><img src="img/retro-disc.gif" alt="">CDs</span><span><img src="img/retro-mug.gif" alt="">The Office, again</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- side B: fotos + experimentos, con pestañas -->
+  <section class="section" id="sideb" data-sec="sideb">
+    <div class="secIndex">[3] // d:\nano\personal\ — side b: pictures from outside the office + experiments</div>
+    <h2 class="glitter p">Side B</h2>
+    <div class="divider"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab on" role="tab" data-tab="photo"><img src="img/retro-camera.gif" alt="" class="inlineGif">Photo archive <small>9 folders</small></button>
+      <button class="tab" role="tab" data-tab="play"><img src="img/retro-disc.gif" alt="" class="inlineGif">Play / experiments <small>3 files</small></button>
+    </div>
+
+    <div class="tabPane" id="photo" data-pane="photo">
+      <div class="tileGrid photos" id="photoGrid"><!-- se llena desde data.js (NANO.photos) --></div>
+      <h3 class="subtitle"><img src="img/retro-camera.gif" alt="" class="inlineGif">contact_sheet / 08 exposures — DEPT® 2nd floor opening. after hours. through a fisheye.</h3>
+      <div class="filmstrip" id="filmstrip"></div>
+      <p class="centerp"><a class="btn" href="https://photos-26-9.pages.dev/" target="_blank" rel="noopener">[ open the complete photo roll ↗ ]</a></p>
+    </div>
+
+    <div class="tabPane" id="play" data-pane="play" hidden>
+      <!-- lab_log: los experimentos como bitácora por fecha (guiño a praystation). se llena desde data.js (group: 'play') -->
+      <div class="labLog">
+        <div class="labHead"><span>d:\nano\lab\ — lab_log.txt</span><span>sorted by: date ↓ · <b id="labCount">0</b> entries</span></div>
+        <ol class="labList" id="labList"></ol>
+        <div class="labFoot">every experiment ships with its question. the answers end up in client work.</div>
+      </div>
+      <p class="centerp"><a href="https://dribbble.com/marianogbarraza" target="_blank" rel="noopener">↗ more visual experiments on dribbble</a></p>
+    </div>
+  </section>
+
+  <!-- contact = guestbook -->
+  <section class="section contact" id="contact" data-sec="contact">
+    <div class="secIndex">[4] // outgoing connection / new message — ● connection ready</div>
+    <h2 class="glitter">Make contact</h2>
+    <div class="divider"></div>
+    <div class="availability reveal"><span class="msnDot"></span><b id="availLine">open to good projects · buenos aires → everywhere · currently accepting human interaction</b></div>
+    <div class="contactLinks reveal">
+      <a class="panel" href="mailto:marianogbarraza@gmail.com" id="mailPanel"><h3>E-mail</h3><span>the real inbox ↗</span></a>
+      <a class="panel red" href="https://www.linkedin.com/in/mariano-leonel-garcia-barraza-686a1299/" target="_blank" rel="noopener"><h3>LinkedIn</h3><span>let's connect ↗</span></a>
+      <a class="panel orange" href="https://www.behance.net/marianogbarraza" target="_blank" rel="noopener"><h3>Behance</h3><span>the archive ↗</span></a>
+      <a class="panel green" href="#" data-open="msn"><h3>MSN</h3><span>say hello · zumbido!</span></a>
+    </div>
+    <p class="centerp smallLinks"><a href="https://www.instagram.com/nano.gbarraza/" target="_blank" rel="noopener">instagram ↗</a> · <a href="https://dribbble.com/marianogbarraza" target="_blank" rel="noopener">dribbble ↗</a> · <a href="#" data-resume>resume.pdf ↓</a> · <a href="#" data-open="shop">🛒 hire_nano.shop</a></p>
+    <div class="projectDetail reveal"><div class="wbar"><span>guestbook.exe — don't be a stranger. leave a trace.</span><i>_</i><i>□</i><i>×</i></div><div class="wmenu"><span>File</span><span>Edit</span><span>Send</span><span>Help</span></div>
+      <div style="padding:10px">
+        <div class="form">
+          <div class="field"><label for="f-name">Name:</label><input id="f-name" name="name" placeholder="your name" autocomplete="name"></div>
+          <div class="field"><label for="f-contact">E-mail / handle:</label><input id="f-contact" name="contact" placeholder="email / @handle" autocomplete="email"></div>
+          <div class="field"><label for="f-type">Project type:</label><input id="f-type" name="type" placeholder="campaign / identity / digital / other"></div>
+          <div class="field"><label for="f-note">Message:</label><input id="f-note" name="note" placeholder="what are we making?"></div>
+        </div>
+        <div class="sendRow"><button class="send" type="button">Sign guestbook</button><small>your entry shows up below. to make sure nano reads it: <a id="gbMail" href="#" target="_blank" rel="noopener">e-mail it ↗</a> · or open <a href="#" data-open="msn">msn</a> for a zumbido.</small></div>
+      </div>
+    </div>
+    <div class="gbook reveal">
+      <div class="gbTitle"><img src="img/retro-mail-flight.png" alt="" class="inlineGif">guestbook.txt — <span id="gbCount">0</span> entries <span class="blinkTxt">●</span> <small id="gbMode">saved in your browser</small></div>
+      <div class="gbEntries" id="gbEntries"></div>
+    </div>
+    <div class="foot">
+      <div class="webring" id="webring" hidden><a href="#" data-ring="prev">« prev</a> · <b>nano webring</b> · <a href="#" data-ring="random">random</a> · <a href="#" data-ring="next">next »</a></div><br>
+      © 2001–2026 nano garcía barraza · buenos aires → everywhere · senior visual designer / photography / visual culture<br>
+      best viewed with netscape 4.7 at 1024×768 · <span class="blinkTxt">✦ you are still here. good. ✦</span> · <a href="#" data-open="readme">about_me.txt</a> · <a href="#" data-open="makingof">making_of.txt</a> · <a href="index.html">← back to the clean version</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ columna derecha: blinkies ============ -->
+<aside class="col colR">
+  <div class="badges">
+    <a class="badge b1" href="#work">I ♥ design</a>
+    <a class="badge b2" href="#sideb" data-tab="play">best viewed in the dark</a>
+    <a class="badge b3" href="#about">now @ DEPT®</a>
+    <a class="badge b4" href="#sideb" data-tab="photo">photo spy</a>
+    <a class="badge b5" href="#" data-open="shop">hire me!!</a>
+    <a class="badge b6" href="#" data-open="amp">now playing: nanoamp</a>
+    <a class="badge b7" href="#" data-open="recycle">no templates</a>
+    <a class="badge b8" href="#" data-open="msn">msn: online</a>
+    <a class="badge b9" href="#" data-act="tour">30-second tour</a>
+    <a class="badge b1" href="#" data-act="crt">crt mode</a>
+    <a class="badge b2" href="https://www.behance.net/marianogbarraza" target="_blank" rel="noopener">behance ↗</a>
+  </div>
+  <div class="gifBox" id="gifBox"><img src="img/retro-cassette.gif" alt="cassette"><span>original mixtape · side a</span></div>
+  <div class="gifBox" style="border-color:var(--cyan);color:var(--cyan)"><img src="img/retro-headphone-globe.png" alt=""><span>buenos aires → everywhere</span></div>
+  <div class="gbox purple centerp" style="font-size:10px"><h4>webcam</h4><span class="blinkTxt">● offline</span><br>last seen: overthinking a margin</div>
+</aside>
+</div><!-- /site -->
+
+<!-- ============ case study: pantalla completa por capítulos (guiño a hi-res!). se arma desde data.js ============ -->
+<div class="case" id="case" hidden role="dialog" aria-label="case study">
+  <div class="caseBar"><span class="caseTitle"></span><span class="caseProg"><i></i></span><button class="caseExit" data-case="exit">× exit · show me the work</button></div>
+  <div class="caseStage" aria-live="polite"></div>
+  <nav class="caseNav" aria-label="chapters"></nav>
+  <div class="caseHint">← → · click · esc to exit</div>
+</div>
+
+<!-- ============ capa de sistema ============ -->
+<div class="preview" id="preview" aria-hidden="true"><img alt=""><small></small></div>
+<div class="winLayer" id="winLayer"></div>
+
+<div class="clippy" id="clippy">
+  <div class="bubble hide"><b>clippy.exe</b><p></p><button class="x" aria-label="close tip">×</button><button class="langSw" data-act="lang" title="english / español">ES</button></div>
+  <div class="clipBody" title="click me">
+    <button class="clipBye" aria-label="hide clippy">×</button>
+    <svg viewBox="0 0 64 96" aria-hidden="true">
+      <defs><linearGradient id="clipMetal" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f4f3ec"/><stop offset=".5" stop-color="#b9b9b2"/><stop offset="1" stop-color="#eeede6"/></linearGradient></defs>
+      <path d="M20 86 V26 a12 12 0 0 1 24 0 v50 a8 8 0 0 1 -16 0 V38 a4 4 0 0 1 8 0 v32" fill="none" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+      <path d="M20 86 V26 a12 12 0 0 1 24 0 v50 a8 8 0 0 1 -16 0 V38 a4 4 0 0 1 8 0 v32" fill="none" stroke="url(#clipMetal)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <g class="brow l"><rect x="19" y="10" width="11" height="3" fill="#000" transform="rotate(-10 24 11)"/></g>
+      <g class="brow r"><rect x="34" y="10" width="11" height="3" fill="#000" transform="rotate(10 40 11)"/></g>
+      <g class="eye"><ellipse cx="25" cy="22" rx="6.5" ry="8" fill="#fff" stroke="#000" stroke-width="1.5"/><g class="pupil"><circle cx="26" cy="23" r="2.6" fill="#000"/></g></g>
+      <g class="eye"><ellipse cx="39" cy="22" rx="6.5" ry="8" fill="#fff" stroke="#000" stroke-width="1.5"/><g class="pupil"><circle cx="40" cy="23" r="2.6" fill="#000"/></g></g>
+    </svg>
+  </div>
+</div>
+
+<div class="startMenu" id="startMenu" hidden>
+  <div class="startSide"><b>nano</b>2001</div>
+  <div class="startList">
+    <button data-act="tour"><svg><use href="#i-tour"/></svg><b>30-second tour</b><small>start here</small></button>
+    <div class="startSep"></div>
+    <button data-go="#top"><svg><use href="#i-go"/></svg>Main<small>home</small></button>
+    <button data-go="#work"><svg><use href="#i-go"/></svg>Work.exe<small>[1]</small></button>
+    <button data-go="#about"><svg><use href="#i-go"/></svg>About me<small>[2]</small></button>
+    <button data-go="#sideb" data-tab="photo"><svg><use href="#i-go"/></svg>Photography<small>[3]</small></button>
+    <button data-go="#sideb" data-tab="play"><svg><use href="#i-go"/></svg>Experiments<small>[3]</small></button>
+    <button data-go="#contact"><svg><use href="#i-go"/></svg>Guestbook<small>[4]</small></button>
+    <div class="startSep"></div>
+    <button data-open="amp"><svg><use href="#i-amp"/></svg>nanoamp<small>music</small></button>
+    <button data-open="face"><svg><use href="#i-face"/></svg>who_is_nano.gif</button>
+    <button data-open="msn"><svg><use href="#i-msn"/></svg>MSN Messenger</button>
+    <button data-open="readme"><svg><use href="#i-txt"/></svg>about_me.txt</button>
+    <button data-open="makingof"><svg><use href="#i-txt"/></svg>making_of.txt</button>
+    <button data-open="shop"><svg><use href="#i-cart"/></svg>hire_nano.shop<small>buy now</small></button>
+    <button data-resume><svg><use href="#i-pdf"/></svg>resume.pdf</button>
+    <button data-open="recycle"><svg><use href="#i-bin"/></svg>Recycle Bin</button>
+    <button data-random><svg><use href="#i-img"/></svg>Random work<small>surf</small></button>
+    <div class="startSep"></div>
+    <button data-act="sound"><svg><use href="#i-snd"/></svg><span data-sound-label>Sound: off</span></button>
+    <button data-act="crt"><svg><use href="#i-crt"/></svg><span data-crt-label>CRT mode: off</span></button>
+    <button data-act="clippy"><svg><use href="#i-clip"/></svg>Clippy<small>show / hide</small></button>
+    <button data-act="lang"><svg><use href="#i-clip"/></svg><span data-lang-label>Clippy: english</span></button>
+    <button data-act="wall"><svg><use href="#i-img"/></svg><span data-wall-label>wallpaper: stars</span></button>
+    <button data-act="saver"><svg><use href="#i-crt"/></svg>Screensaver<small>now</small></button>
+    <button data-act="cursor"><svg><use href="#i-go"/></svg><span data-cursor-label>cursor: arrow</span></button>
+    <div class="startSep"></div>
+    <button data-act="shutdown"><svg><use href="#i-off"/></svg>Shut Down…</button>
+  </div>
+</div>
+
+<footer class="taskbar" id="taskbar">
+  <button class="start" id="startBtn" aria-haspopup="true" aria-controls="startMenu"><i></i>Start</button>
+  <div class="tasks" id="tasks"></div>
+  <div class="tray"><span class="hideS">📍 <b class="sec" id="traySec">home</b></span><b id="trayClock">--:--</b></div>
+</footer>
+
+<!-- ============ templates de ventanas (editá el contenido acá) ============ -->
+<template id="tpl-amp">
+  <div class="amp">
+    <div class="ampScreen">
+      <div class="ampTitle"><span>*** nanoamp_02 — 01 — slow connection.mod — synthesized live, 0 kb, original mixtape *** it really whips the llama's… no wait, that's the other one ***</span></div>
+      <div class="ampBars"></div>
+      <div class="ampTime"><b class="ampClock">00:00</b><span>112 bpm · original mixtape</span></div>
+    </div>
+    <div class="ampCtl">
+      <button class="btn hi" data-amp="play">▶ Play</button>
+      <button class="btn" data-amp="pause">❚❚ Pause</button>
+      <button class="btn" data-amp="mute">Mute</button>
+      <label class="ampVol">vol <input type="range" min="0" max="100" value="60" data-amp="vol"></label>
+    </div>
+    <div class="ampSkin"><label>skin: <select data-amp="skin"><option value="classic">classic (black/lime)</option><option value="bubblegum">bubblegum (pink)</option><option value="chrome">chrome (y2k blue)</option><option value="amber">amber terminal</option><option value="matrix">matrix</option><option value="winamp">winamp classic</option></select></label></div>
+    <div class="ampNote">music generated with WebAudio in your browser. no mp3 was harmed.</div>
+  </div>
+</template>
+
+<template id="tpl-face">
+  <div class="faceWin">
+    <img src="img/retro-face.gif" alt="nano" draggable="false">
+    <div class="faceCap">who_is_nano.gif · yes, a real person · drag me · double-click to spin</div>
+  </div>
+</template>
+
+<template id="tpl-msn">
+  <div class="msn">
+    <div class="msnHead"><span class="msnDot"></span><b>nano</b><i>(online — probably overthinking a margin)</i></div>
+    <div class="msnLog"></div>
+    <div class="msnCompose"><input class="msnInput" placeholder="type a message…" maxlength="300"><button class="btn hi" data-msn="send">Send</button><button class="btn" data-msn="nudge" title="nudge / zumbido">Zumbido!</button></div>
+    <div class="msnFoot"><span>nothing leaves this page until you hit →</span><a class="msnMail" href="#" target="_blank" rel="noopener">send for real ↗</a></div>
+  </div>
+</template>
+
+<template id="tpl-readme">
+  <div class="notepad"><b>ABOUT_ME.TXT</b> — nano garcía barraza / unsaved thoughts
+
+there's a person in this machine.
+
+i'm nano garcia barraza, a visual designer based in buenos aires. currently senior visual designer at DEPT®, designing for google. previously media.monks, accenture, SPG and fundación gutenberg. from curious creator to full-time designer.
+
+images, typography, visual identities. and an unreasonable number of open tabs.
+
+outside the work folder: photography, technology, games and the weird corners of the internet. off-screen obsessions: CRTs, consoles, vinyl, CDs. and another rewatch of the office.
+
+* currently accepting human interaction.</div>
+</template>
+
+<template id="tpl-makingof">
+  <div class="notepad"><b>MAKING_OF.TXT</b> — how this site was made / why it looks like this
+
+<b>2001.</b> my first pages: frontpage, 56k, one gif per hour, a counter that lied a bit. a site took a month and you were proud of the marquee. that internet was ugly, slow and completely alive.
+
+<b>2026.</b> this site. same spirit, different tools. the layout, the windows, clippy, the synthesized music and most of the gifs were built in a few afternoons with an AI subscription that costs about three hamburgers a month. the idea, the taste, the photos, the work and the jokes are mine.
+
+<b>¿y si armamos lo que sea?</b> that's the question this site answers. when turning an idea into something clickable takes an afternoon instead of a month, the slow part is knowing what's worth making — and what to leave out. taste is the bottleneck. still.
+
+<b>what's handmade:</b> the art direction, the writing, every "no". the work in c:\nano\work\.
+<b>what's generated:</b> the chiptune (WebAudio, zero mp3), a few retro gifs, the first draft of some code.
+<b>what's deleted:</b> see the recycle bin. a minimal landing with three cards almost happened.
+
+<b>stack:</b> html, css, js. no framework, no template, no cookies. one file per idea. best viewed at 1024×768, works at 2K anyway.
+
+<b>cost of this site:</b> ≈ 3 hamburgers / month · 1 cinema ticket · a lot of mate.</div>
+</template>
+
+<template id="tpl-resume">
+  <div class="errBody">
+    <svg><use href="#i-pdf"/></svg>
+    <div>
+      <p><b>resume.pdf</b> — not uploaded yet.</p>
+      <p class="muted">nano: drop your CV as <code>resume.pdf</code> next to classic.html and this button opens it. until then, the full experience is on LinkedIn.</p>
+      <div class="row right"><a class="btn hi" href="https://www.linkedin.com/in/mariano-leonel-garcia-barraza-686a1299/" target="_blank" rel="noopener">[ open linkedin ↗ ]</a></div>
+    </div>
+  </div>
+</template>
+
+<!-- hire_nano.shop: la ficha de "producto" estilo e-shop 2004. todo lo que dice es real; los chistes son chistes -->
+<template id="tpl-shop">
+  <div class="shop">
+    <div class="shopChrome"><span>Address</span><div class="shopUrl">http://www.hire-nano.shop/designers/senior-visual-designer.html</div><button class="btn" data-shop="go">Go</button></div>
+    <div class="shopHead">
+      <div class="shopLogo">hire_nano<i>.shop</i><small>the internet's finest designers · since 2001</small></div>
+      <button class="shopCartBtn" data-shop="cart"><svg><use href="#i-cart"/></svg>Cart (<b data-cart-count>0</b>)</button>
+    </div>
+    <div class="shopTabs"><span class="on">Designers</span><span>Campaigns</span><span>Identities</span><span>Digital</span><span>Photography</span></div>
+    <div class="shopCrumbs">Home › Designers › Visual › <b>Senior</b></div>
+
+    <div class="shopMain" data-shop-step="product">
+      <div class="shopPic">
+        <div class="shopFrame"><img src="img/retro-face.gif" alt="Nano García Barraza"></div>
+        <small>1 of 1 · limited edition · actual human</small>
+      </div>
+      <div class="shopInfo">
+        <h3>Nano García Barraza — Senior Visual Designer <span>(2026 Edition)</span></h3>
+        <div class="shopBy">by <a href="#about" data-shop-close>Nano García Barraza</a> · currently at <b>DEPT®</b>, designing for Google</div>
+        <div class="shopReviews" data-reviews-summary><span class="stars">☆☆☆☆☆</span> <a href="#contact" data-shop-close>0 customer reviews — sign the guestbook and be the first</a></div>
+        <div class="shopPrice">
+          <div><span>List price:</span><s>a deck on friday</s></div>
+          <div><span>Price:</span><b class="price">let's talk</b></div>
+          <div><span>You save:</span><i>the time it takes to find the right designer</i></div>
+        </div>
+        <div class="shopStock"><b>In stock.</b> <span data-shop-avail>open to good projects</span></div>
+        <div class="shopShip">Ships from <b>Buenos Aires, Argentina</b> (GMT-3) → everywhere.<br>Usually replies within <b>1 business day</b>.</div>
+        <div class="shopBuy">
+          <label>Qty: <select disabled><option>1 (there is only one)</option></select></label>
+          <button class="shopAdd" data-shop="add">Add to Cart</button>
+          <button class="shopNow" data-shop="buy">Buy now with 1-Click®</button>
+          <a class="shopManual" href="#" data-resume><svg><use href="#i-pdf"/></svg>download the manual (resume.pdf)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="shopCheckout" data-shop-step="checkout" hidden>
+      <div class="shopSteps"><span class="done">1. Cart ✓</span><span class="on">2. Payment method</span><span>3. Make something</span></div>
+      <p><b>Order <span data-order>#2001-0000</span></b> — 1× Senior Visual Designer, 2026 Edition. Choose how to pay:</p>
+      <div class="shopPay">
+        <a class="shopPayOpt" data-shop="mail" href="#"><b>✉ E-mail</b><small>a good brief. ugly references welcome.</small></a>
+        <a class="shopPayOpt" data-shop="linkedin" href="#" target="_blank" rel="noopener"><b>in LinkedIn</b><small>the corporate way. also fine.</small></a>
+        <a class="shopPayOpt" href="#" data-resume><b>📄 resume.pdf</b><small>read the manual first.</small></a>
+      </div>
+      <p class="muted">secure checkout: your own e-mail client. no cookies were sold in this transaction. <a href="#" data-shop="back">‹ back to product</a></p>
+    </div>
+
+    <div class="shopBlock">
+      <h4>Product details</h4>
+      <ul class="shopSpecs">
+        <li><b>Model:</b> Senior Visual Designer</li>
+        <li><b>Current firmware:</b> DEPT® — product pages, campaigns &amp; digital experiences for Google</li>
+        <li><b>Previous versions:</b> Media.Monks (2021–2025) · Accenture (2018–2021) · SPG (2017–2018) · Fundación Gutenberg (2015–2017)</li>
+        <li><b>Training:</b> Visual Communication Design (UNR) · Photography &amp; Digital Retouch (Motivarte)</li>
+        <li><b>Software:</b> Photoshop · Illustrator · Lightroom · Figma · InDesign · AI tools</li>
+        <li><b>Languages:</b> Spanish (native) · English (professional)</li>
+        <li><b>In the field since:</b> 2015</li>
+        <li><b>Compatible with:</b> Google · Netflix · Chevrolet</li>
+        <li><b>Features:</b> art direction · campaigns · visual identities · digital experiences · product storytelling · presentation design · photography</li>
+        <li><b>In the box:</b> taste, typography, a point of view, an unreasonable number of open tabs, mate 🧉</li>
+        <li><b>Not included:</b> templates, "passionate about pixels", 90-second intros</li>
+      </ul>
+    </div>
+
+    <div class="shopBlock">
+      <h4>Customers who viewed this designer also viewed</h4>
+      <div class="shopAlso">
+        <a href="#" data-project="google-skills"><img src="img/google.webp" alt="Google Skills"><span>Google Skills</span><small>google · 2025</small></a>
+        <a href="#" data-project="netflix-ads"><img src="img/netflix.webp" alt="Netflix Ads"><span>Netflix Ads</span><small>netflix · 2025</small></a>
+        <a href="#" data-project="chevy-ev"><img src="img/chevy.webp" alt="Chevy EV"><span>Chevy EV</span><small>chevrolet · 2025</small></a>
+        <a href="#" data-project="fitbit-air"><img src="img/google-trey-0.webp" alt="Fitbit Air"><span>Fitbit Air</span><small>google · 2026</small></a>
+      </div>
+    </div>
+    <div class="shopBlock" data-reviews hidden>
+      <h4>Customer reviews <small>· verified colleagues</small></h4>
+      <div class="shopRevList"></div>
+    </div>
+    <div class="shopFoot">Conditions of use · Privacy notice (there are no cookies) · © 2001–2026 hire_nano.shop · <a href="#work" data-shop-close>back to the portfolio</a></div>
+  </div>
+</template>
+
+<template id="tpl-recycle">
+  <div>
+    <h4>Deleted ideas (4 items)</h4>
+    <ul class="binList">
+      <li><span>a minimal landing with three cards</span><button class="btn" data-restore="three cards">Restore</button></li>
+      <li><span>corporate blue + "passionate about pixels"</span><button class="btn" data-restore="corporate blue">Restore</button></li>
+      <li><span>a dark brutalist editorial with big type (v12–v13)</span><button class="btn" data-restore="brutalist editorial">Restore</button></li>
+      <li><span>a 90-second intro video you can't skip</span><button class="btn" data-restore="intro video">Restore</button></li>
+    </ul>
+    <p class="muted" style="margin-top:8px">items in the bin don't come back. that's the point.</p>
+  </div>
+</template>
+
+<template id="tpl-prize">
+  <div class="prizeBody">
+    <div class="prizeBanner">★ CONGRATULATIONS!!! ★</div>
+    <p>You are the <b>1,000,000th</b> visitor of nano's internet!!!</p>
+    <p class="blinkTxt" style="color:#c00;font-weight:700">CLICK HERE TO CLAIM YOUR PRIZE &gt;&gt;&gt;</p>
+    <div class="row right"><button class="btn hi" data-prize>CLAIM PRIZE!!!</button></div>
+    <p class="muted">* prize is a random project. no cruises. no ipods. sorry.</p>
+  </div>
+</template>
+
+<template id="tpl-error">
+  <div class="errBody">
+    <svg><use href="#i-err"/></svg>
+    <div>
+      <p><b>nano.exe has encountered a problem and needs to close.</b> We are sorry for the inconvenience.</p>
+      <code>exception: TOO_MUCH_PERSONALITY at 0x2001<br>module: clippy.dll · taste.sys · open_tabs.dat</code>
+      <div class="row right"><button class="btn hi" data-err="send">Send Error Report</button><button class="btn" data-err="dont">Don't Send</button></div>
+    </div>
+  </div>
+</template>
+
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/windows.js"></script>
+<script src="js/clippy.js"></script>
+<script src="js/eggs.js"></script>
+<script src="js/app.js"></script>
+<script src="js/extras.js"></script>
+</body>
+</html>

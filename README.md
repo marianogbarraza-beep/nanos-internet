@@ -53,6 +53,11 @@ En el link de claude.ai el msn contesta de verdad: "nano bot" es Claude con una 
 - **Webring**: `data.js` → `NANO.webring` (lista de {name, url}); vacío = oculto.
 - **og:image** para previews: `img/og.jpg`; en `index.html` apunta a `https://marianogbarraza-beep.github.io/nanos-internet/` (cambialo si le ponés dominio propio).
 
+## Dos versiones
+- **index.html** — la versión clara (31 oct 2026): flow tipo portfolio, estilos y lógica en `clean/` (style.css, main.js).
+- **classic.html** — la 2001 edition (v13): ventanas, Clippy, MSN, nanoamp, hire_nano.shop. Estilos en `css/`, lógica en `js/`.
+- Las dos leen el mismo contenido: `js/data.js`, `img/`, `resume.pdf`. Cambiás un proyecto ahí y cambia en las dos.
+
 ## Publicado
 - **GitHub Pages**: https://marianogbarraza-beep.github.io/nanos-internet/ — repo `marianogbarraza-beep/nanos-internet`, rama `main`. Para actualizar: commit + push a main y en ~1 minuto está online.
 - Fuera de claude.ai el guestbook y el contador se guardan en el navegador de cada visitante.

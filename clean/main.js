@@ -1,11 +1,11 @@
 /* ============================================================
-   clean/main.js — arma las secciones desde ../js/data.js (el mismo
+   clean/main.js — arma las secciones desde js/data.js (el mismo
    contenido que la versión classic) y maneja: nav, reveal, preview
    del índice, visor de galería y case study por capítulos.
    ============================================================ */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const IMG = f => `../img/${f}`;
+const IMG = f => `img/${f}`;   // la página vive en la raíz (index.html); clean/ solo tiene estilos y lógica
 const reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
 const finePointer = matchMedia('(pointer:fine)').matches;
 const P = id => NANO.projects.find(p => p.id === id);
