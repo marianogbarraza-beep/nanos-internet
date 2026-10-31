@@ -135,22 +135,15 @@ addEventListener('load', () => setTimeout(revealVisible, 400)); addEventListener
   addEventListener('resize', frame); frame();
 })();
 
-/* ---------- cursor propio: punto que crece en links y dice "view" sobre el trabajo ---------- */
-if (finePointer && !reduceMotion) {
+/* ---------- tooltip del sistema: "View" / "Play" al pasar sobre el trabajo, pegado al cursor de Win98 ---------- */
+if (finePointer) {
   const cur = $('#cursor'), label = $('span', cur);
-  document.documentElement.classList.add('hasCursor');
-  let x = 0, y = 0, cx = 0, cy = 0, on = false;
-  const loop = () => { cx += (x - cx) * .22; cy += (y - cy) * .22; cur.style.transform = `translate3d(${cx}px,${cy}px,0)`; requestAnimationFrame(loop); };
   addEventListener('pointermove', e => {
-    x = e.clientX; y = e.clientY;
-    if (!on) { on = true; cx = x; cy = y; cur.classList.add('on'); loop(); }
     const t = e.target.closest('[data-view],[data-case],[data-peek]');
-    const link = e.target.closest('a,button');
-    cur.classList.toggle('view', !!t); cur.classList.toggle('link', !t && !!link);
-    label.textContent = t ? (t.dataset.case ? 'play' : 'view') : '';
+    cur.classList.toggle('view', !!t);
+    if (t) { label.textContent = t.dataset.case ? 'Play case study' : 'View project'; cur.style.transform = `translate3d(${e.clientX + 18}px,${e.clientY + 22}px,0)`; }
   }, { passive: true });
-  document.addEventListener('pointerleave', () => cur.classList.remove('on'));
-  document.addEventListener('pointerenter', () => on && cur.classList.add('on'));
+  document.addEventListener('pointerleave', () => cur.classList.remove('view'));
 }
 
 /* ---------- reloj + contador (local, como en 2001: miente un poco) ---------- */
