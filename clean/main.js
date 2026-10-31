@@ -101,8 +101,57 @@ const secIO = new IntersectionObserver(es => es.forEach(e => {
 ['work', 'about', 'sideb', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
 
 /* ---------- reveal ---------- */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px 10% 0px' });   // entra un poco antes de verse: scrolleando rápido no queda negro
-$$('.reveal').forEach(r => io.observe(r));
+$$('.secHead h2').forEach(h => { const s = el('span', '', h.textContent); h.textContent = ''; h.append(s); });   // el título de sección sube desde su máscara
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in', 'lines-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -6% 0px' });
+$$('.reveal, .mail').forEach(r => io.observe(r));
+// red de seguridad: si el navegador restauró el scroll a mitad de página, lo que ya está a la vista se revela igual
+const revealVisible = () => $$('.reveal:not(.in), .mail:not(.in)').forEach(r => { const b = r.getBoundingClientRect(); if (b.top < innerHeight && b.bottom > 0) r.classList.add('in', 'lines-in'); });
+addEventListener('load', () => setTimeout(revealVisible, 400)); addEventListener('pageshow', () => setTimeout(revealVisible, 400));
+
+/* ---------- entrada del hero: líneas que suben, cara que se revela ---------- */
+(document.fonts?.ready || Promise.resolve()).then(() => setTimeout(() => document.documentElement.classList.add('lines-in'), 120));
+
+/* ---------- scroll: progreso, parallax y marquee que acelera ---------- */
+(function scrollFx() {
+  const prog = $('#progress'), big = $('.heroBig'), track = $('.clientsTrack'), feats = $$('.featMedia');
+  let last = scrollY, vel = 0, raf = 0;
+  const frame = () => {
+    raf = 0;
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h ? y / h : 0})`;
+    if (!reduceMotion) {
+      big.style.transform = `translate3d(0,${y * .35}px,0)`;                     // el NANO de fondo se queda atrás
+      vel += ((y - last) - vel) * .15; last = y;
+      track.style.setProperty('--skew', `${Math.max(-12, Math.min(12, -vel * .4))}deg`);   // el marquee se inclina con la velocidad
+      feats.forEach(f => {                                                           // la imagen se desliza dentro de su ventana
+        const r = f.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+        const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;             // -0.5 … 0.5
+        f.style.setProperty('--py', (p * r.height * .16 + r.height * .08).toFixed(1));
+      });
+      if (Math.abs(vel) > .2) raf = requestAnimationFrame(frame);                   // sigue hasta que el skew se asienta
+    }
+  };
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
+  addEventListener('resize', frame); frame();
+})();
+
+/* ---------- cursor propio: punto que crece en links y dice "view" sobre el trabajo ---------- */
+if (finePointer && !reduceMotion) {
+  const cur = $('#cursor'), label = $('span', cur);
+  document.documentElement.classList.add('hasCursor');
+  let x = 0, y = 0, cx = 0, cy = 0, on = false;
+  const loop = () => { cx += (x - cx) * .22; cy += (y - cy) * .22; cur.style.transform = `translate3d(${cx}px,${cy}px,0)`; requestAnimationFrame(loop); };
+  addEventListener('pointermove', e => {
+    x = e.clientX; y = e.clientY;
+    if (!on) { on = true; cx = x; cy = y; cur.classList.add('on'); loop(); }
+    const t = e.target.closest('[data-view],[data-case],[data-peek]');
+    const link = e.target.closest('a,button');
+    cur.classList.toggle('view', !!t); cur.classList.toggle('link', !t && !!link);
+    label.textContent = t ? (t.dataset.case ? 'play' : 'view') : '';
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => cur.classList.remove('on'));
+  document.addEventListener('pointerenter', () => on && cur.classList.add('on'));
+}
 
 /* ---------- reloj + contador (local, como en 2001: miente un poco) ---------- */
 (function clock() {
